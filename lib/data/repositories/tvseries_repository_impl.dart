@@ -22,5 +22,4 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
-
 }
