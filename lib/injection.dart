@@ -63,6 +63,7 @@ void init() {
     ),
   );
 
+
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
   locator.registerLazySingleton(() => GetPopularMovies(locator()));

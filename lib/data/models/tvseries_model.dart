@@ -66,7 +66,8 @@ class TvSeriesModel extends Equatable{
   };
 
   TvSeries toEntity() {
-    return TvSeries(backdropPath: backdropPath,
+    return TvSeries(
+        backdropPath: backdropPath,
         firstAirDate: this.firstAirDate,
         genreIds: this.genreIds,
         id: this.id,
@@ -78,7 +79,8 @@ class TvSeriesModel extends Equatable{
         popularity: this.popularity,
         posterPath: this.posterPath,
         voteAverage: this.voteAverage,
-        voteCount: this.voteCount);
+        voteCount: this.voteCount
+    );
   }
 
   @override
