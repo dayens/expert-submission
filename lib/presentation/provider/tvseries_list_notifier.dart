@@ -6,15 +6,12 @@ import '../../common/state_enum.dart';
 
 class TvSeriesListNotifier extends ChangeNotifier {
   var _airingTodayTvSeries = <TvSeries>[];
-
-  List<TvSeries> get nowAiringTodayTvSeries => _airingTodayTvSeries;
+  List<TvSeries> get airingTodayTvSeries => _airingTodayTvSeries;
 
   RequestState _airingState = RequestState.Empty;
-
   RequestState get nowAiringState => _airingState;
 
   String _message = '';
-
   String get message => _message;
 
   TvSeriesListNotifier({
@@ -23,7 +20,7 @@ class TvSeriesListNotifier extends ChangeNotifier {
 
   final GetAiringTodayTvSeries getAiringTodayTvSeries;
 
-  Future<void> fetchNowPlayingMovies() async {
+  Future<void> fetchAiringTodayTvSeries() async {
     _airingState = RequestState.Loading;
     notifyListeners();
 
@@ -34,9 +31,9 @@ class TvSeriesListNotifier extends ChangeNotifier {
         _message = failure.message;
         notifyListeners();
       },
-          (moviesData) {
+          (tvSeriesData) {
         _airingState = RequestState.Loaded;
-        _airingTodayTvSeries = moviesData;
+        _airingTodayTvSeries = tvSeriesData;
         notifyListeners();
       },
     );

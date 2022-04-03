@@ -71,7 +71,8 @@ void init() {
 
   locator.registerFactory(
       () => TvSeriesListNotifier(
-          getAiringTodayTvSeries: locator())
+          getAiringTodayTvSeries: locator(),
+      ),
   );
 
 

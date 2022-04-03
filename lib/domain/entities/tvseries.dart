@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 
 class TvSeries extends Equatable {
 
-  String backdropPath;
-  DateTime firstAirDate;
+  String? backdropPath;
+  String? firstAirDate;
   List<int> genreIds;
   int id;
   String name;
@@ -12,7 +12,7 @@ class TvSeries extends Equatable {
   String originalName;
   String overview;
   double popularity;
-  String posterPath;
+  String? posterPath;
   double voteAverage;
   int voteCount;
 
