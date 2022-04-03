@@ -5,7 +5,6 @@ import 'package:ditonton/presentation/pages/top_rated_tvseries_page.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
 import '../provider/tvseries_list_notifier.dart';
