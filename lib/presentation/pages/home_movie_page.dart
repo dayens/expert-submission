@@ -6,6 +6,7 @@ import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/tvseries_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
@@ -13,6 +14,8 @@ import 'package:ditonton/presentation/provider/tvseries_list_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../widgets/sub_heading.dart';
 
 class HomeMoviePage extends StatefulWidget {
   @override
@@ -23,15 +26,15 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
   @override
   void initState() {
     super.initState();
-    // Future.microtask(
-    //     () => Provider.of<MovieListNotifier>(context, listen: false)
-    //       ..fetchNowPlayingMovies()
-    //       ..fetchPopularMovies()
-    //       ..fetchTopRatedMovies());
     Future.microtask(
-        () => Provider.of<TvSeriesListNotifier>(context, listen: false)
-            ..fetchAiringTodayTvSeries()
-    );
+        () => Provider.of<MovieListNotifier>(context, listen: false)
+          ..fetchNowPlayingMovies()
+          ..fetchPopularMovies()
+          ..fetchTopRatedMovies());
+    // Future.microtask(
+    //     () => Provider.of<TvSeriesListNotifier>(context, listen: false)
+    //         ..fetchAiringTodayTvSeries()
+    // );
   }
 
   @override
@@ -58,7 +61,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               leading: Icon(Icons.tv),
               title: Text('TV Series'),
               onTap: () {
-
+                Navigator.pushNamed(context, TvSeriesPage.ROUTE_NAME);
               },
             ),
             ListTile(
@@ -111,7 +114,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return Text('Failed');
                 }
               }),
-              _buildSubHeading(
+              SubHeading(
                 title: 'Popular',
                 onTap: () =>
                     Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME),
@@ -128,7 +131,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return Text('Failed');
                 }
               }),
-              _buildSubHeading(
+              SubHeading(
                 title: 'Top Rated',
                 onTap: () =>
                     Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
@@ -145,54 +148,54 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return Text('Failed');
                 }
               }),
-              _buildSubHeading(
-                title: 'Airing Today TV Series',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
-              ),
-              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.nowAiringState;
-                if (state == RequestState.Loading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state == RequestState.Loaded) {
-                  return Container(
-                    height: 200,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        final tvSeries = data.airingTodayTvSeries[index];
-                        return Container(
-                          padding: const EdgeInsets.all(8),
-                          child: InkWell(
-                            onTap: () {
-                              // Navigator.pushNamed(
-                              //   context,
-                              //   MovieDetailPage.ROUTE_NAME,
-                              //   arguments: movie.id,
-                              // );
-                            },
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(16)),
-                              child: CachedNetworkImage(
-                                imageUrl: '$BASE_IMAGE_URL${tvSeries.posterPath}',
-                                placeholder: (context, url) => Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                      itemCount: data.airingTodayTvSeries.length,
-                    ),
-                  );
-                } else {
-                  return Text('Failed');
-                }
-              }),
+              // _buildSubHeading(
+              //   title: 'Airing Today TV Series',
+              //   onTap: () =>
+              //       Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
+              // ),
+              // Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+              //   final state = data.nowAiringState;
+              //   if (state == RequestState.Loading) {
+              //     return Center(
+              //       child: CircularProgressIndicator(),
+              //     );
+              //   } else if (state == RequestState.Loaded) {
+              //     return Container(
+              //       height: 200,
+              //       child: ListView.builder(
+              //         scrollDirection: Axis.horizontal,
+              //         itemBuilder: (context, index) {
+              //           final tvSeries = data.airingTodayTvSeries[index];
+              //           return Container(
+              //             padding: const EdgeInsets.all(8),
+              //             child: InkWell(
+              //               onTap: () {
+              //                 // Navigator.pushNamed(
+              //                 //   context,
+              //                 //   MovieDetailPage.ROUTE_NAME,
+              //                 //   arguments: movie.id,
+              //                 // );
+              //               },
+              //               child: ClipRRect(
+              //                 borderRadius: BorderRadius.all(Radius.circular(16)),
+              //                 child: CachedNetworkImage(
+              //                   imageUrl: '$BASE_IMAGE_URL${tvSeries.posterPath}',
+              //                   placeholder: (context, url) => Center(
+              //                     child: CircularProgressIndicator(),
+              //                   ),
+              //                   errorWidget: (context, url, error) => Icon(Icons.error),
+              //                 ),
+              //               ),
+              //             ),
+              //           );
+              //         },
+              //         itemCount: data.airingTodayTvSeries.length,
+              //       ),
+              //     );
+              //   } else {
+              //     return Text('Failed');
+              //   }
+              // }),
             ],
           ),
         ),
@@ -200,26 +203,26 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
     );
   }
 
-  Row _buildSubHeading({required String title, required Function() onTap}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: kHeading6,
-        ),
-        InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  // Row _buildSubHeading({required String title, required Function() onTap}) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //     children: [
+  //       Text(
+  //         title,
+  //         style: kHeading6,
+  //       ),
+  //       InkWell(
+  //         onTap: onTap,
+  //         child: Padding(
+  //           padding: const EdgeInsets.all(8.0),
+  //           child: Row(
+  //             children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 }
 
 class MovieList extends StatelessWidget {
