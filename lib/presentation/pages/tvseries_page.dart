@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:ditonton/presentation/pages/popular_tvseries_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_tvseries_page.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -77,7 +78,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               SubHeading(
                   title: 'Top Rated',
                   onTap: () {
-
+                    Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME);
                   }),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.topRatedState;

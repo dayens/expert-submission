@@ -22,7 +22,7 @@ class TvSeriesModel extends Equatable{
   String? firstAirDate;
   List<int> genreIds;
   int id;
-  String name;
+  String? name;
   List<String> originCountry;
   String originalLanguage;
   String originalName;

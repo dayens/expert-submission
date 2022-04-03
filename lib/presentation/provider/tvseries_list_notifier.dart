@@ -1,10 +1,8 @@
 import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:ditonton/domain/usecases/get_airing_today_tvseries.dart';
 import 'package:ditonton/domain/usecases/get_popular_tvseries.dart';
-import 'package:ditonton/domain/usecases/get_top_rated_movies.dart';
 import 'package:ditonton/domain/usecases/get_top_rated_tvseries.dart';
 import 'package:flutter/material.dart';
-
 import '../../common/state_enum.dart';
 
 class TvSeriesListNotifier extends ChangeNotifier {
