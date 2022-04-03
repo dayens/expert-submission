@@ -81,7 +81,7 @@ class TvSeriesListNotifier extends ChangeNotifier {
     _topRatedState = RequestState.Loading;
     notifyListeners();
 
-    final result = await getAiringTodayTvSeries.execute();
+    final result = await getTopRatedTvSeries.execute();
     result.fold(
           (failure) {
             _topRatedState = RequestState.Error;

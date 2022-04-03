@@ -1,7 +1,7 @@
 import 'package:ditonton/data/models/tvseries_model.dart';
 import 'package:equatable/equatable.dart';
 
-class TvSeriesResponse {
+class TvSeriesResponse extends Equatable{
   TvSeriesResponse({
     required this.page,
     required this.tvSeriesList,
@@ -27,6 +27,9 @@ class TvSeriesResponse {
     "total_pages": totalPages,
     "total_results": totalResults,
   };
+
+  @override
+  List<Object?> get props => [tvSeriesList];
 }
 
 // class TvSeriesResponse extends Equatable {
