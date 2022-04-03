@@ -23,6 +23,8 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
     Future.microtask(
             () => Provider.of<TvSeriesListNotifier>(context, listen: false)
                 ..fetchAiringTodayTvSeries()
+                ..fetchPopularTvSeries()
+                ..fetchTopRatedTvSeries()
         );
   }
 
@@ -34,26 +36,62 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Airing Today',
-              style: kHeading6,
-            ),
-            Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-              final state = data.nowAiringState;
-              if (state == RequestState.Loading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state == RequestState.Loaded) {
-                return TvSeriesList(data.airingTodayTvSeries);
-              } else {
-                return Text('Failed');
-              }
-            }),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Airing Today',
+                style: kHeading6,
+              ),
+              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+                final state = data.nowAiringState;
+                if (state == RequestState.Loading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state == RequestState.Loaded) {
+                  return TvSeriesList(data.airingTodayTvSeries);
+                } else {
+                  return Text('Failed');
+                }
+              }),
+              SubHeading(
+                  title: 'Popular',
+                  onTap: () {
+
+                  }),
+              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+                final state = data.popularState;
+                if (state == RequestState.Loading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state == RequestState.Loaded) {
+                  return TvSeriesList(data.popularTvSeries);
+                } else {
+                  return Text('Failed');
+                }
+              }),
+              SubHeading(
+                  title: 'Top Rated',
+                  onTap: () {
+
+                  }),
+              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+                final state = data.topRatedState;
+                if (state == RequestState.Loading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state == RequestState.Loaded) {
+                  return TvSeriesList(data.topRatedTvSeries);
+                } else {
+                  return Text('Failed');
+                }
+              }),
+            ],
+          ),
         ),
       ),
     );

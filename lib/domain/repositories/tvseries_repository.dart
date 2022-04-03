@@ -4,4 +4,7 @@ import '../../common/failure.dart';
 
 abstract class TvSeriesRepository {
   Future<Either<Failure, List<TvSeries>>> getAiringTodayTvSeries();
+  Future<Either<Failure, List<TvSeries>>> getPopularTvSeries();
+  Future<Either<Failure, List<TvSeries>>> getTopRatedTvSeries();
+
 }
