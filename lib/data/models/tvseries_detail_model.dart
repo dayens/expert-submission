@@ -5,99 +5,99 @@ class TvSeriesDetailResponse extends Equatable {
   TvSeriesDetailResponse({
     required this.adult,
     required this.backdropPath,
-    required this.createdBy,
-    required this.episodeRunTime,
-    required this.firstAirDate,
+    // required this.createdBy,
+    // required this.episodeRunTime,
+    // required this.firstAirDate,
     required this.genres,
-    required this.homepage,
+    // required this.homepage,
     required this.id,
-    required this.inProduction,
-    required this.languages,
-    required this.lastAirDate,
-    required this.lastEpisodeToAir,
-    required this.name,
-    required this.nextEpisodeToAir,
-    required this.networks,
-    required this.numberOfEpisodes,
-    required this.numberOfSeasons,
-    required this.originCountry,
-    required this.originalLanguage,
+    // required this.inProduction,
+    // required this.languages,
+    // required this.lastAirDate,
+    // required this.lastEpisodeToAir,
+    // required this.name,
+    // required this.nextEpisodeToAir,
+    // required this.networks,
+    // required this.numberOfEpisodes,
+    // required this.numberOfSeasons,
+    // required this.originCountry,
+    // required this.originalLanguage,
     required this.originalName,
     required this.overview,
     required this.popularity,
     required this.posterPath,
-    required this.productionCompanies,
-    required this.productionCountries,
-    required this.seasons,
-    required this.status,
-    required this.tagline,
-    required this.type,
+    // required this.productionCompanies,
+    // required this.productionCountries,
+    // required this.seasons,
+    // required this.status,
+    // required this.tagline,
+    // required this.type,
     required this.voteAverage,
     required this.voteCount,
   });
 
   bool adult;
   String backdropPath;
-  List<CreatedBy> createdBy;
-  List<int> episodeRunTime;
-  String firstAirDate;
+  // List<CreatedBy> createdBy;
+  // List<int> episodeRunTime;
+  // String firstAirDate;
   List<Genre> genres;
-  String homepage;
+  // String homepage;
   int id;
-  bool inProduction;
-  List<String> languages;
-  String lastAirDate;
-  TEpisodeToAir lastEpisodeToAir;
-  String name;
-  TEpisodeToAir nextEpisodeToAir;
-  List<Network> networks;
-  int numberOfEpisodes;
-  int numberOfSeasons;
-  List<String> originCountry;
-  String originalLanguage;
+  // bool inProduction;
+  // List<String> languages;
+  // String lastAirDate;
+  // TEpisodeToAir lastEpisodeToAir;
+  // String name;
+  // TEpisodeToAir nextEpisodeToAir;
+  // List<Network> networks;
+  // int numberOfEpisodes;
+  // int numberOfSeasons;
+  // List<String> originCountry;
+  // String originalLanguage;
   String originalName;
   String overview;
   double popularity;
   String posterPath;
-  List<dynamic> productionCompanies;
-  List<ProductionCountry> productionCountries;
-  List<Season> seasons;
-  String status;
-  String tagline;
-  String type;
+  // List<dynamic> productionCompanies;
+  // List<ProductionCountry> productionCountries;
+  // List<Season> seasons;
+  // String status;
+  // String tagline;
+  // String type;
   double voteAverage;
   int voteCount;
 
   factory TvSeriesDetailResponse.fromJson(Map<String, dynamic> json) => TvSeriesDetailResponse(
     adult: json["adult"],
     backdropPath: json["backdrop_path"],
-    createdBy: List<CreatedBy>.from(json["created_by"].map((x) => CreatedBy.fromJson(x))),
-    episodeRunTime: List<int>.from(json["episode_run_time"].map((x) => x)),
-    firstAirDate: json["first_air_date"],
+    // createdBy: List<CreatedBy>.from(json["created_by"].map((x) => CreatedBy.fromJson(x))),
+    // episodeRunTime: List<int>.from(json["episode_run_time"].map((x) => x)),
+    // firstAirDate: json["first_air_date"],
     genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
-    homepage: json["homepage"],
+    // homepage: json["homepage"],
     id: json["id"],
-    inProduction: json["in_production"],
-    languages: List<String>.from(json["languages"].map((x) => x)),
-    lastAirDate: json["last_air_date"],
-    lastEpisodeToAir: TEpisodeToAir.fromJson(json["last_episode_to_air"]),
-    name: json["name"],
-    nextEpisodeToAir: TEpisodeToAir.fromJson(json["next_episode_to_air"]),
-    networks: List<Network>.from(json["networks"].map((x) => Network.fromJson(x))),
-    numberOfEpisodes: json["number_of_episodes"],
-    numberOfSeasons: json["number_of_seasons"],
-    originCountry: List<String>.from(json["origin_country"].map((x) => x)),
-    originalLanguage: json["original_language"],
+    // inProduction: json["in_production"],
+    // languages: List<String>.from(json["languages"].map((x) => x)),
+    // lastAirDate: json["last_air_date"],
+    // lastEpisodeToAir: TEpisodeToAir.fromJson(json["last_episode_to_air"]),
+    // name: json["name"],
+    // nextEpisodeToAir: TEpisodeToAir.fromJson(json["next_episode_to_air"]),
+    // networks: List<Network>.from(json["networks"].map((x) => Network.fromJson(x))),
+    // numberOfEpisodes: json["number_of_episodes"],
+    // numberOfSeasons: json["number_of_seasons"],
+    // originCountry: List<String>.from(json["origin_country"].map((x) => x)),
+    // originalLanguage: json["original_language"],
     originalName: json["original_name"],
     overview: json["overview"],
     popularity: json["popularity"].toDouble(),
     posterPath: json["poster_path"],
-    productionCompanies: List<dynamic>.from(json["production_companies"].map((x) => x)),
-    productionCountries: List<ProductionCountry>.from(json["production_countries"].map((x) => ProductionCountry.fromJson(x))),
-    seasons: List<Season>.from(json["seasons"].map((x) => Season.fromJson(x))),
-    status: json["status"],
-    tagline: json["tagline"],
-    type: json["type"],
+    // productionCompanies: List<dynamic>.from(json["production_companies"].map((x) => x)),
+    // productionCountries: List<ProductionCountry>.from(json["production_countries"].map((x) => ProductionCountry.fromJson(x))),
+    // seasons: List<Season>.from(json["seasons"].map((x) => Season.fromJson(x))),
+    // status: json["status"],
+    // tagline: json["tagline"],
+    // type: json["type"],
     voteAverage: json["vote_average"].toDouble(),
     voteCount: json["vote_count"],
   );
@@ -105,33 +105,33 @@ class TvSeriesDetailResponse extends Equatable {
   Map<String, dynamic> toJson() => {
     "adult": adult,
     "backdrop_path": backdropPath,
-    "created_by": List<dynamic>.from(createdBy.map((x) => x.toJson())),
-    "episode_run_time": List<dynamic>.from(episodeRunTime.map((x) => x)),
-    "first_air_date": firstAirDate,
-    "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
-    "homepage": homepage,
-    "id": id,
-    "in_production": inProduction,
-    "languages": List<dynamic>.from(languages.map((x) => x)),
-    "last_air_date": lastAirDate,
-    "last_episode_to_air": lastEpisodeToAir.toJson(),
-    "name": name,
-    "next_episode_to_air": nextEpisodeToAir.toJson(),
-    "networks": List<dynamic>.from(networks.map((x) => x.toJson())),
-    "number_of_episodes": numberOfEpisodes,
-    "number_of_seasons": numberOfSeasons,
-    "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
-    "original_language": originalLanguage,
+    // "created_by": List<dynamic>.from(createdBy.map((x) => x.toJson())),
+    // "episode_run_time": List<dynamic>.from(episodeRunTime.map((x) => x)),
+    // "first_air_date": firstAirDate,
+    // "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
+    // "homepage": homepage,
+    // "id": id,
+    // "in_production": inProduction,
+    // "languages": List<dynamic>.from(languages.map((x) => x)),
+    // "last_air_date": lastAirDate,
+    // "last_episode_to_air": lastEpisodeToAir.toJson(),
+    // "name": name,
+    // "next_episode_to_air": nextEpisodeToAir.toJson(),
+    // "networks": List<dynamic>.from(networks.map((x) => x.toJson())),
+    // "number_of_episodes": numberOfEpisodes,
+    // "number_of_seasons": numberOfSeasons,
+    // "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
+    // "original_language": originalLanguage,
     "original_name": originalName,
     "overview": overview,
     "popularity": popularity,
     "poster_path": posterPath,
-    "production_companies": List<dynamic>.from(productionCompanies.map((x) => x)),
-    "production_countries": List<dynamic>.from(productionCountries.map((x) => x.toJson())),
-    "seasons": List<dynamic>.from(seasons.map((x) => x.toJson())),
-    "status": status,
-    "tagline": tagline,
-    "type": type,
+    // "production_companies": List<dynamic>.from(productionCompanies.map((x) => x)),
+    // "production_countries": List<dynamic>.from(productionCountries.map((x) => x.toJson())),
+    // "seasons": List<dynamic>.from(seasons.map((x) => x.toJson())),
+    // "status": status,
+    // "tagline": tagline,
+    // "type": type,
     "vote_average": voteAverage,
     "vote_count": voteCount,
   };

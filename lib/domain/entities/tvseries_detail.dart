@@ -26,7 +26,7 @@ class TvSeriesDetail extends Equatable {
   String originalName;
   String overview;
   double popularity;
-  String posterPath;
+  String? posterPath;
   // List<dynamic> productionCompanies;
   // List<ProductionCountry> productionCountries;
   // List<Season> seasons;

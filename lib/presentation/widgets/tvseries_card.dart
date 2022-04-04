@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../common/constants.dart';
 import '../../domain/entities/tvseries.dart';
+import '../pages/tvseries_detail_page.dart';
 
 class TvCard extends StatelessWidget {
   final TvSeries tv;
@@ -14,11 +15,11 @@ class TvCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
         onTap: () {
-          // Navigator.pushNamed(
-          //   context,
-          //   MovieDetailPage.ROUTE_NAME,
-          //   arguments: movie.id,
-          // );
+          Navigator.pushNamed(
+                context,
+                TvSeriesDetailPage.ROUTE_NAME,
+                arguments: tv.id,
+              );
         },
         child: Stack(
           alignment: Alignment.bottomLeft,
