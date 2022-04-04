@@ -1,6 +1,9 @@
 import 'dart:convert';
 
-class TvSeriesDetailResponse {
+import 'package:ditonton/domain/entities/tvseries_detail.dart';
+import 'package:equatable/equatable.dart';
+
+class TvSeriesDetailResponse extends Equatable {
   TvSeriesDetailResponse({
     required this.adult,
     required this.backdropPath,
@@ -39,13 +42,13 @@ class TvSeriesDetailResponse {
   String backdropPath;
   List<CreatedBy> createdBy;
   List<int> episodeRunTime;
-  DateTime firstAirDate;
+  String firstAirDate;
   List<Genre> genres;
   String homepage;
   int id;
   bool inProduction;
   List<String> languages;
-  DateTime lastAirDate;
+  String lastAirDate;
   TEpisodeToAir lastEpisodeToAir;
   String name;
   TEpisodeToAir nextEpisodeToAir;
@@ -72,13 +75,13 @@ class TvSeriesDetailResponse {
     backdropPath: json["backdrop_path"],
     createdBy: List<CreatedBy>.from(json["created_by"].map((x) => CreatedBy.fromJson(x))),
     episodeRunTime: List<int>.from(json["episode_run_time"].map((x) => x)),
-    firstAirDate: DateTime.parse(json["first_air_date"]),
+    firstAirDate: json["first_air_date"],
     genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
     homepage: json["homepage"],
     id: json["id"],
     inProduction: json["in_production"],
     languages: List<String>.from(json["languages"].map((x) => x)),
-    lastAirDate: DateTime.parse(json["last_air_date"]),
+    lastAirDate: json["last_air_date"],
     lastEpisodeToAir: TEpisodeToAir.fromJson(json["last_episode_to_air"]),
     name: json["name"],
     nextEpisodeToAir: TEpisodeToAir.fromJson(json["next_episode_to_air"]),
@@ -106,13 +109,13 @@ class TvSeriesDetailResponse {
     "backdrop_path": backdropPath,
     "created_by": List<dynamic>.from(createdBy.map((x) => x.toJson())),
     "episode_run_time": List<dynamic>.from(episodeRunTime.map((x) => x)),
-    "first_air_date": "${firstAirDate.year.toString().padLeft(4, '0')}-${firstAirDate.month.toString().padLeft(2, '0')}-${firstAirDate.day.toString().padLeft(2, '0')}",
+    "first_air_date": firstAirDate,
     "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
     "homepage": homepage,
     "id": id,
     "in_production": inProduction,
     "languages": List<dynamic>.from(languages.map((x) => x)),
-    "last_air_date": "${lastAirDate.year.toString().padLeft(4, '0')}-${lastAirDate.month.toString().padLeft(2, '0')}-${lastAirDate.day.toString().padLeft(2, '0')}",
+    "last_air_date": lastAirDate,
     "last_episode_to_air": lastEpisodeToAir.toJson(),
     "name": name,
     "next_episode_to_air": nextEpisodeToAir.toJson(),
@@ -134,7 +137,39 @@ class TvSeriesDetailResponse {
     "vote_average": voteAverage,
     "vote_count": voteCount,
   };
+
+  TvSeriesDetail toEntity() {
+    return TvSeriesDetail(
+        adult: adult,
+        backdropPath: backdropPath,
+        genres: genres,
+        id: id,
+        originalName: originalName,
+        overview: overview,
+        popularity: popularity,
+        posterPath: posterPath,
+        voteAverage: voteAverage,
+        voteCount: voteCount
+    );
+  }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+    adult,
+    backdropPath,
+    genres,
+    id,
+    originalName,
+    overview,
+    popularity,
+    posterPath,
+    voteAverage,
+    voteCount,
+  ];
 }
+
+
 
 class CreatedBy {
   CreatedBy({
