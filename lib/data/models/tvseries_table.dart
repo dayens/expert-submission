@@ -24,14 +24,14 @@ class TvSeriesTable extends Equatable {
 
   factory TvSeriesTable.fromMap(Map<String, dynamic> map) => TvSeriesTable(
     id: map['id'],
-    title: map['originalName'],
+    title: map['title'],
     posterPath: map['posterPath'],
     overview: map['overview'],
   );
 
   Map<String, dynamic> toJson() => {
     'id': id,
-    'originalName': title,
+    'title': title,
     'posterPath': posterPath,
     'overview': overview,
   };

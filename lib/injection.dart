@@ -34,6 +34,12 @@ import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
+import 'data/datasources/tvseries_local_data_source.dart';
+import 'domain/usecases/get_watchlist_status_tvseries.dart';
+import 'domain/usecases/get_watchlist_tvseries.dart';
+import 'domain/usecases/remove_watchlist_tvseries.dart';
+import 'domain/usecases/save_watchlist_tvseries.dart';
+
 final locator = GetIt.instance;
 
 void init() {
@@ -97,6 +103,10 @@ void init() {
         () => TvSeriesDetailNotifier(
       getTvSeriesDetail: locator(),
           getRecommendedTvSeries: locator(),
+          removeWatchlistTv: locator(),
+          getWatchListStatusTvSeries: locator(),
+          getWatchlistTvSeries: locator(),
+          saveWatchlistTv: locator(),
     ),
   );
 
@@ -120,6 +130,10 @@ void init() {
   locator.registerLazySingleton(() => GetTopRatedTvSeries(locator()));
   locator.registerLazySingleton(() => GetTvSeriesDetail(locator()));
   locator.registerLazySingleton(() => GetRecommendedTvSeries(locator()));
+  locator.registerLazySingleton(() => RemoveWatchlistTv(locator()));
+  locator.registerLazySingleton(() => SaveWatchlistTv(locator()));
+  locator.registerLazySingleton(() => GetWatchlistTvSeries(locator()));
+  locator.registerLazySingleton(() => GetWatchListStatusTvSeries(locator()));
 
 
 
@@ -133,7 +147,9 @@ void init() {
 
   locator.registerLazySingleton<TvSeriesRepository>(
       () => TvSeriesRepositoryImpl(
-          remoteDataSource: locator())
+          remoteDataSource: locator(),
+        localDataSource: locator()
+      )
   );
 
   // data sources
@@ -146,6 +162,8 @@ void init() {
       () => TvSeriesRemoteDataSourceImpl(
           client: locator())
   );
+  locator.registerLazySingleton<TvSeriesLocalDataSource>(
+          () => TvSeriesLocalDataSourceImpl(databaseHelper: locator()));
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
