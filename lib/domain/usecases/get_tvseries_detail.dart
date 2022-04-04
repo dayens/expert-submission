@@ -1,0 +1,15 @@
+import 'package:dartz/dartz.dart';
+import 'package:ditonton/domain/entities/tvseries_detail.dart';
+import 'package:ditonton/domain/repositories/tvseries_repository.dart';
+
+import '../../common/failure.dart';
+
+class GetTvSeriesDetail {
+  final TvSeriesRepository repository;
+
+  GetTvSeriesDetail(this.repository);
+
+  Future<Either<Failure, TvSeriesDetail>> execute(int id) {
+    return repository.getDetailTvSeries(id);
+  }
+}

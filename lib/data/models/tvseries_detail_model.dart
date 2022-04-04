@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ditonton/domain/entities/tvseries_detail.dart';
 import 'package:equatable/equatable.dart';
 
