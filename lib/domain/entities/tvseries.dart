@@ -30,7 +30,16 @@ class TvSeries extends Equatable {
     required this.posterPath,
     required this.voteAverage,
     required this.voteCount,
+
+
 });
+
+  TvSeries.watchlist({
+    required this.id,
+    required this.overview,
+    required this.posterPath,
+    required this.originalName,
+  });
 
   @override
   List<Object?> get props => [
