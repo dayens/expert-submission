@@ -5,6 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
+import '../../data/models/genre_model.dart';
 import '../../data/models/tvseries_detail_model.dart';
 import '../provider/tvseries_detail_notifier.dart';
 
@@ -173,8 +174,9 @@ class DetailContent extends StatelessWidget {
                               'Overview',
                               style: kHeading6,
                             ),
+
                             Text(
-                              tvSeries.overview,
+                             tvSeries.overview
                             ),
                             SizedBox(height: 16),
                             // Text(
@@ -275,7 +277,7 @@ class DetailContent extends StatelessWidget {
     );
   }
 
-  String _showGenres(List<Genre> genres) {
+  String _showGenres(List<GenreModel> genres) {
     String result = '';
     for (var genre in genres) {
       result += genre.name + ', ';

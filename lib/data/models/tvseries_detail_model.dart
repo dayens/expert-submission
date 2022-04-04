@@ -1,3 +1,4 @@
+import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/domain/entities/tvseries_detail.dart';
 import 'package:equatable/equatable.dart';
 
@@ -41,7 +42,7 @@ class TvSeriesDetailResponse extends Equatable {
   // List<CreatedBy> createdBy;
   // List<int> episodeRunTime;
   // String firstAirDate;
-  List<Genre> genres;
+  List<GenreModel> genres;
   // String homepage;
   int id;
   // bool inProduction;
@@ -74,7 +75,7 @@ class TvSeriesDetailResponse extends Equatable {
     // createdBy: List<CreatedBy>.from(json["created_by"].map((x) => CreatedBy.fromJson(x))),
     // episodeRunTime: List<int>.from(json["episode_run_time"].map((x) => x)),
     // firstAirDate: json["first_air_date"],
-    genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+    genres: List<GenreModel>.from(json["genres"].map((x) => GenreModel.fromJson(x))),
     // homepage: json["homepage"],
     id: json["id"],
     // inProduction: json["in_production"],
@@ -201,25 +202,25 @@ class CreatedBy {
   };
 }
 
-class Genre {
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  int id;
-  String name;
-
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-    id: json["id"],
-    name: json["name"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-  };
-}
+// class Genre {
+//   Genre({
+//     required this.id,
+//     required this.name,
+//   });
+//
+//   int id;
+//   String name;
+//
+//   factory Genre.fromJson(Map<String, dynamic> json) => Genre(
+//     id: json["id"],
+//     name: json["name"],
+//   );
+//
+//   Map<String, dynamic> toJson() => {
+//     "id": id,
+//     "name": name,
+//   };
+// }
 
 class TEpisodeToAir {
   TEpisodeToAir({

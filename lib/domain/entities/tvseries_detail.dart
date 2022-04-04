@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../../data/models/tvseries_detail_model.dart';
+import '../../data/models/genre_model.dart';
 
 class TvSeriesDetail extends Equatable {
 
@@ -9,7 +8,7 @@ class TvSeriesDetail extends Equatable {
   // List<CreatedBy> createdBy;
   // List<int> episodeRunTime;
   // String firstAirDate;
-  List<Genre> genres;
+  List<GenreModel> genres;
   // String homepage;
   int id;
   // bool inProduction;
