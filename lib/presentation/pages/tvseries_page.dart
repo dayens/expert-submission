@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:ditonton/presentation/pages/popular_tvseries_page.dart';
+import 'package:ditonton/presentation/pages/search_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries_detail_page.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
@@ -34,6 +35,14 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('TV Series'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, SearchTvSeriesPage.ROUTE_NAME);
+            },
+            icon: Icon(Icons.search),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

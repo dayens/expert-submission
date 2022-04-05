@@ -14,4 +14,5 @@ abstract class TvSeriesRepository {
   Future<Either<Failure, String>> removeWatchlist(TvSeriesDetail tv);
   Future<bool> isAddedToWatchlist(int id);
   Future<Either<Failure, List<TvSeries>>> getWatchlist();
+  Future<Either<Failure, List<TvSeries>>> getSearchTvSeries(String query);
 }

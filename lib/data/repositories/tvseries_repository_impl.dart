@@ -111,4 +111,17 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       throw e;
     }
   }
+
+  @override
+  Future<Either<Failure, List<TvSeries>>> getSearchTvSeries(
+      String query) async {
+    try {
+      final result = await remoteDataSource.getSearchTv(query);
+      return Right(result.map((e) => e.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
 }

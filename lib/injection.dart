@@ -30,6 +30,7 @@ import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_tvseries_notifier.dart';
 import 'package:ditonton/presentation/provider/tvseries_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tvseries_list_notifier.dart';
+import 'package:ditonton/presentation/provider/tvseries_search_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_tvseries_notifier.dart';
 import 'package:http/http.dart' as http;
@@ -40,6 +41,7 @@ import 'domain/usecases/get_watchlist_status_tvseries.dart';
 import 'domain/usecases/get_watchlist_tvseries.dart';
 import 'domain/usecases/remove_watchlist_tvseries.dart';
 import 'domain/usecases/save_watchlist_tvseries.dart';
+import 'domain/usecases/search_tvseries.dart';
 
 final locator = GetIt.instance;
 
@@ -113,6 +115,11 @@ void init() {
   locator.registerFactory(
     () => WatchlistTvSeriesNotifier(getWatchlistTvSeries: locator()),
   );
+  locator.registerFactory(
+    () => TvSeriesSearchNotifier(
+      searchTvSeries: locator(),
+    ),
+  );
 
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
@@ -136,6 +143,7 @@ void init() {
   locator.registerLazySingleton(() => SaveWatchlistTv(locator()));
   locator.registerLazySingleton(() => GetWatchlistTvSeries(locator()));
   locator.registerLazySingleton(() => GetWatchListStatusTvSeries(locator()));
+  locator.registerLazySingleton(() => SearchTvSeries(locator()));
 
   // repository
   locator.registerLazySingleton<MovieRepository>(
