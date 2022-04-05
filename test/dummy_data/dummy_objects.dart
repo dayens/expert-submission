@@ -25,6 +25,24 @@ final testMovie = Movie(
 
 final testMovieList = [testMovie];
 
+final testTvSeries = TvSeries(
+    backdropPath: 'backdropPath',
+    firstAirDate: 'firstAirDate',
+    genreIds: [],
+    id: 1,
+    name: 'name',
+    originCountry: [],
+    originalLanguage: 'originalLanguage',
+    originalName: 'originalName',
+    overview: 'overview',
+    popularity: 1,
+    posterPath: 'posterPath',
+    voteAverage: 1,
+    voteCount: 1
+);
+
+final testTvSeriesList = [testTvSeries];
+
 final testMovieDetail = MovieDetail(
   adult: false,
   backdropPath: 'backdropPath',
