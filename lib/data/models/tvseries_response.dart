@@ -3,31 +3,31 @@ import 'package:equatable/equatable.dart';
 
 class TvSeriesResponse extends Equatable {
   TvSeriesResponse({
-    required this.page,
+    // required this.page,
     required this.tvSeriesList,
-    required this.totalPages,
-    required this.totalResults,
+    // required this.totalPages,
+    // required this.totalResults,
   });
 
-  int page;
+  // int page;
   List<TvSeriesModel> tvSeriesList;
-  int totalPages;
-  int totalResults;
+  // int totalPages;
+  // int totalResults;
 
   factory TvSeriesResponse.fromJson(Map<String, dynamic> json) =>
       TvSeriesResponse(
-        page: json["page"],
+        // page: json["page"],
         tvSeriesList: List<TvSeriesModel>.from(
             json["results"].map((x) => TvSeriesModel.fromJson(x))),
-        totalPages: json["total_pages"],
-        totalResults: json["total_results"],
+        // totalPages: json["total_pages"],
+        // totalResults: json["total_results"],
       );
 
   Map<String, dynamic> toJson() => {
-        "page": page,
+        // "page": page,
         "results": List<dynamic>.from(tvSeriesList.map((x) => x.toJson())),
-        "total_pages": totalPages,
-        "total_results": totalResults,
+        // "total_pages": totalPages,
+        // "total_results": totalResults,
       };
 
   @override
