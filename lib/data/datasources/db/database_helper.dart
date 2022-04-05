@@ -10,7 +10,8 @@ class DatabaseHelperMovie {
     _databaseHelper = this;
   }
 
-  factory DatabaseHelperMovie() => _databaseHelper ?? DatabaseHelperMovie._instance();
+  factory DatabaseHelperMovie() =>
+      _databaseHelper ?? DatabaseHelperMovie._instance();
 
   static Database? _database;
 
@@ -109,14 +110,14 @@ class DatabaseHelperMovie {
   // }
 }
 
-
 class DatabaseHelperTvSeries {
   static DatabaseHelperTvSeries? _databaseHelper;
   DatabaseHelperTvSeries._instance() {
     _databaseHelper = this;
   }
 
-  factory DatabaseHelperTvSeries() => _databaseHelper ?? DatabaseHelperTvSeries._instance();
+  factory DatabaseHelperTvSeries() =>
+      _databaseHelper ?? DatabaseHelperTvSeries._instance();
 
   static Database? _database;
 

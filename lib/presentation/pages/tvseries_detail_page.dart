@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
 import '../../data/models/genre_model.dart';
-import '../../data/models/tvseries_detail_model.dart';
 import '../provider/tvseries_detail_notifier.dart';
 
 class TvSeriesDetailPage extends StatefulWidget {
@@ -26,7 +25,8 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
     Future.microtask(() {
       Provider.of<TvSeriesDetailNotifier>(context, listen: false)
           .fetchTvSeriesDetail(widget.id);
-
+      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
+          .loadWatchlistStatus(widget.id);
     });
   }
 
@@ -107,24 +107,24 @@ class DetailContent extends StatelessWidget {
                               onPressed: () async {
                                 if (!isAddedWatchlist) {
                                   await Provider.of<TvSeriesDetailNotifier>(
-                                      context,
-                                      listen: false)
+                                          context,
+                                          listen: false)
                                       .addWatchlist(tvSeries);
                                 } else {
                                   await Provider.of<TvSeriesDetailNotifier>(
-                                      context,
-                                      listen: false)
+                                          context,
+                                          listen: false)
                                       .removeFromWatchlist(tvSeries);
                                 }
 
                                 final message =
                                     Provider.of<TvSeriesDetailNotifier>(context,
-                                        listen: false)
+                                            listen: false)
                                         .watchlistMessage;
 
                                 if (message ==
-                                    TvSeriesDetailNotifier
-                                        .watchlistAddSuccessMessage ||
+                                        TvSeriesDetailNotifier
+                                            .watchlistAddSuccessMessage ||
                                     message ==
                                         TvSeriesDetailNotifier
                                             .watchlistRemoveSuccessMessage) {
@@ -175,10 +175,7 @@ class DetailContent extends StatelessWidget {
                               'Overview',
                               style: kHeading6,
                             ),
-
-                            Text(
-                             tvSeries.overview
-                            ),
+                            Text(tvSeries.overview),
                             SizedBox(height: 16),
                             Text(
                               'Recommendations',
@@ -218,15 +215,15 @@ class DetailContent extends StatelessWidget {
                                               ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                'https://image.tmdb.org/t/p/w500${tv.posterPath}',
+                                                    'https://image.tmdb.org/t/p/w500${tv.posterPath}',
                                                 placeholder: (context, url) =>
                                                     Center(
-                                                      child:
+                                                  child:
                                                       CircularProgressIndicator(),
-                                                    ),
+                                                ),
                                                 errorWidget:
                                                     (context, url, error) =>
-                                                    Icon(Icons.error),
+                                                        Icon(Icons.error),
                                               ),
                                             ),
                                           ),

@@ -27,7 +27,7 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
     required this.getWatchListStatusTvSeries,
     required this.saveWatchlistTv,
     required this.removeWatchlistTv,
-});
+  });
 
   late TvSeriesDetail _tvSeriesDetail;
   TvSeriesDetail get tvSeriesDetail => _tvSeriesDetail;
@@ -53,28 +53,25 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
     final detailResult = await getTvSeriesDetail.execute(id);
     final recommendedResult = await getRecommendedTvSeries.execute(id);
     detailResult.fold(
-          (failure) {
+      (failure) {
         _tvState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-          (tv) {
-            _tvRecommendedState = RequestState.Loading;
+      (tv) {
+        _tvRecommendedState = RequestState.Loading;
         _tvSeriesDetail = tv;
         notifyListeners();
-        recommendedResult.fold(
-            (failure) {
-              _tvRecommendedState = RequestState.Error;
-              _message = failure.message;
-            },
-            (tvRecom) {
-              _tvRecommendedState = RequestState.Loaded;
-              _tvRecommended = tvRecom;
-            }
-        );
-            _tvState = RequestState.Loaded;
-            notifyListeners();
-          },
+        recommendedResult.fold((failure) {
+          _tvRecommendedState = RequestState.Error;
+          _message = failure.message;
+        }, (tvRecom) {
+          _tvRecommendedState = RequestState.Loaded;
+          _tvRecommended = tvRecom;
+        });
+        _tvState = RequestState.Loaded;
+        notifyListeners();
+      },
     );
   }
 
@@ -85,10 +82,10 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
     final result = await saveWatchlistTv.execute(tv);
 
     await result.fold(
-          (failure) async {
+      (failure) async {
         _watchlistMessage = failure.message;
       },
-          (successMessage) async {
+      (successMessage) async {
         _watchlistMessage = successMessage;
       },
     );
@@ -100,10 +97,10 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
     final result = await removeWatchlistTv.execute(tv);
 
     await result.fold(
-          (failure) async {
+      (failure) async {
         _watchlistMessage = failure.message;
       },
-          (successMessage) async {
+      (successMessage) async {
         _watchlistMessage = successMessage;
       },
     );
@@ -116,5 +113,4 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
     _isAddedtoWatchlistTv = result;
     notifyListeners();
   }
-
 }

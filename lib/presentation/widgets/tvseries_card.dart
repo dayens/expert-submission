@@ -16,10 +16,10 @@ class TvCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(
-                context,
-                TvSeriesDetailPage.ROUTE_NAME,
-                arguments: tv.id,
-              );
+            context,
+            TvSeriesDetailPage.ROUTE_NAME,
+            arguments: tv.id,
+          );
         },
         child: Stack(
           alignment: Alignment.bottomLeft,

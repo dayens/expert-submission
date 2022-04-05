@@ -23,11 +23,10 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
   void initState() {
     super.initState();
     Future.microtask(
-            () => Provider.of<TvSeriesListNotifier>(context, listen: false)
-                ..fetchAiringTodayTvSeries()
-                ..fetchPopularTvSeries()
-                ..fetchTopRatedTvSeries()
-        );
+        () => Provider.of<TvSeriesListNotifier>(context, listen: false)
+          ..fetchAiringTodayTvSeries()
+          ..fetchPopularTvSeries()
+          ..fetchTopRatedTvSeries());
   }
 
   @override
@@ -61,7 +60,8 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               SubHeading(
                   title: 'Popular',
                   onTap: () {
-                    Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME);
+                    Navigator.pushNamed(
+                        context, PopularTvSeriesPage.ROUTE_NAME);
                   }),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.popularState;
@@ -78,7 +78,8 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               SubHeading(
                   title: 'Top Rated',
                   onTap: () {
-                    Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME);
+                    Navigator.pushNamed(
+                        context, TopRatedTvSeriesPage.ROUTE_NAME);
                   }),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.topRatedState;
@@ -99,7 +100,6 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
     );
   }
 }
-
 
 class TvSeriesList extends StatelessWidget {
   final List<TvSeries> tvSeries;

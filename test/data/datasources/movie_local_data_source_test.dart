@@ -8,10 +8,10 @@ import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MovieLocalDataSourceImpl dataSource;
-  late MockDatabaseHelper mockDatabaseHelper;
+  late MockDatabaseHelperMovie mockDatabaseHelper;
 
   setUp(() {
-    mockDatabaseHelper = MockDatabaseHelper();
+    mockDatabaseHelper = MockDatabaseHelperMovie();
     dataSource = MovieLocalDataSourceImpl(databaseHelper: mockDatabaseHelper);
   });
 
@@ -89,7 +89,7 @@ void main() {
   group('get watchlist movies', () {
     test('should return list of MovieTable from database', () async {
       // arrange
-      when(mockDatabaseHelper.getWatchlistMovies())
+      when(mockDatabaseHelper.getWatchlistMovie())
           .thenAnswer((_) async => [testMovieMap]);
       // act
       final result = await dataSource.getWatchlistMovies();

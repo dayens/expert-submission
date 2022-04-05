@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import '../../data/models/genre_model.dart';
 
 class TvSeriesDetail extends Equatable {
-
   bool adult;
   String backdropPath;
   // List<CreatedBy> createdBy;
@@ -46,23 +45,20 @@ class TvSeriesDetail extends Equatable {
     required this.posterPath,
     required this.voteAverage,
     required this.voteCount,
-});
-
-
+  });
 
   @override
   // TODO: implement props
   List<Object?> get props => [
-    adult,
-    backdropPath,
-    genres,
-    id,
-    name,
-    overview,
-    popularity,
-    posterPath,
-    voteAverage,
-    voteCount,
-  ];
-
+        adult,
+        backdropPath,
+        genres,
+        id,
+        name,
+        overview,
+        popularity,
+        posterPath,
+        voteAverage,
+        voteCount,
+      ];
 }

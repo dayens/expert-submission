@@ -27,11 +27,10 @@ class TvSeriesListNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  TvSeriesListNotifier({
-    required this.getAiringTodayTvSeries,
-    required this.getPopularTvSeries,
-    required this.getTopRatedTvSeries
-  });
+  TvSeriesListNotifier(
+      {required this.getAiringTodayTvSeries,
+      required this.getPopularTvSeries,
+      required this.getTopRatedTvSeries});
 
   final GetAiringTodayTvSeries getAiringTodayTvSeries;
   final GetPopularTvSeries getPopularTvSeries;
@@ -43,12 +42,12 @@ class TvSeriesListNotifier extends ChangeNotifier {
 
     final result = await getAiringTodayTvSeries.execute();
     result.fold(
-          (failure) {
+      (failure) {
         _airingState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-          (tvSeriesData) {
+      (tvSeriesData) {
         _airingState = RequestState.Loaded;
         _airingTodayTvSeries = tvSeriesData;
         notifyListeners();
@@ -62,13 +61,13 @@ class TvSeriesListNotifier extends ChangeNotifier {
 
     final result = await getPopularTvSeries.execute();
     result.fold(
-          (failure) {
-            _popularState = RequestState.Error;
+      (failure) {
+        _popularState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-          (tvSeriesData) {
-            _popularState = RequestState.Loaded;
+      (tvSeriesData) {
+        _popularState = RequestState.Loaded;
         _popularTvSeries = tvSeriesData;
         notifyListeners();
       },
@@ -81,13 +80,13 @@ class TvSeriesListNotifier extends ChangeNotifier {
 
     final result = await getTopRatedTvSeries.execute();
     result.fold(
-          (failure) {
-            _topRatedState = RequestState.Error;
+      (failure) {
+        _topRatedState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-          (tvSeriesData) {
-            _topRatedState = RequestState.Loaded;
+      (tvSeriesData) {
+        _topRatedState = RequestState.Loaded;
         _topRatedTvSeries = tvSeriesData;
         notifyListeners();
       },

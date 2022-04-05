@@ -25,12 +25,12 @@ class TopRatedTvSeriesNotifier extends ChangeNotifier {
     final result = await getTopRatedTvSeries.execute();
 
     result.fold(
-          (failure) {
+      (failure) {
         _message = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
-          (tvData) {
+      (tvData) {
         _tvSeries = tvData;
         _state = RequestState.Loaded;
         notifyListeners();
