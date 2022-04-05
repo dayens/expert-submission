@@ -16,14 +16,14 @@ class TvSeriesDetailResponse extends Equatable {
     // required this.languages,
     // required this.lastAirDate,
     // required this.lastEpisodeToAir,
-    // required this.name,
+    required this.name,
     // required this.nextEpisodeToAir,
     // required this.networks,
     // required this.numberOfEpisodes,
     // required this.numberOfSeasons,
     // required this.originCountry,
     // required this.originalLanguage,
-    required this.originalName,
+    // required this.originalName,
     required this.overview,
     required this.popularity,
     required this.posterPath,
@@ -49,14 +49,14 @@ class TvSeriesDetailResponse extends Equatable {
   // List<String> languages;
   // String lastAirDate;
   // TEpisodeToAir lastEpisodeToAir;
-  // String name;
+  String name;
   // TEpisodeToAir nextEpisodeToAir;
   // List<Network> networks;
   // int numberOfEpisodes;
   // int numberOfSeasons;
   // List<String> originCountry;
   // String originalLanguage;
-  String originalName;
+  // String originalName;
   String overview;
   double popularity;
   String posterPath;
@@ -82,14 +82,14 @@ class TvSeriesDetailResponse extends Equatable {
     // languages: List<String>.from(json["languages"].map((x) => x)),
     // lastAirDate: json["last_air_date"],
     // lastEpisodeToAir: TEpisodeToAir.fromJson(json["last_episode_to_air"]),
-    // name: json["name"],
+    name: json["name"],
     // nextEpisodeToAir: TEpisodeToAir.fromJson(json["next_episode_to_air"]),
     // networks: List<Network>.from(json["networks"].map((x) => Network.fromJson(x))),
     // numberOfEpisodes: json["number_of_episodes"],
     // numberOfSeasons: json["number_of_seasons"],
     // originCountry: List<String>.from(json["origin_country"].map((x) => x)),
     // originalLanguage: json["original_language"],
-    originalName: json["original_name"],
+    // originalName: json["original_name"],
     overview: json["overview"],
     popularity: json["popularity"].toDouble(),
     posterPath: json["poster_path"],
@@ -116,14 +116,14 @@ class TvSeriesDetailResponse extends Equatable {
     // "languages": List<dynamic>.from(languages.map((x) => x)),
     // "last_air_date": lastAirDate,
     // "last_episode_to_air": lastEpisodeToAir.toJson(),
-    // "name": name,
+    "name": name,
     // "next_episode_to_air": nextEpisodeToAir.toJson(),
     // "networks": List<dynamic>.from(networks.map((x) => x.toJson())),
     // "number_of_episodes": numberOfEpisodes,
     // "number_of_seasons": numberOfSeasons,
     // "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
     // "original_language": originalLanguage,
-    "original_name": originalName,
+    // "original_name": originalName,
     "overview": overview,
     "popularity": popularity,
     "poster_path": posterPath,
@@ -143,7 +143,7 @@ class TvSeriesDetailResponse extends Equatable {
         backdropPath: backdropPath,
         genres: genres,
         id: id,
-        originalName: originalName,
+        name: name,
         overview: overview,
         popularity: popularity,
         posterPath: posterPath,
@@ -159,7 +159,7 @@ class TvSeriesDetailResponse extends Equatable {
     backdropPath,
     genres,
     id,
-    originalName,
+    name,
     overview,
     popularity,
     posterPath,

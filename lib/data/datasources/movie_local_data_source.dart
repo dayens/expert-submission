@@ -10,7 +10,7 @@ abstract class MovieLocalDataSource {
 }
 
 class MovieLocalDataSourceImpl implements MovieLocalDataSource {
-  final DatabaseHelper databaseHelper;
+  final DatabaseHelperMovie databaseHelper;
 
   MovieLocalDataSourceImpl({required this.databaseHelper});
 
@@ -46,7 +46,7 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
 
   @override
   Future<List<MovieTable>> getWatchlistMovies() async {
-    final result = await databaseHelper.getWatchlist();
+    final result = await databaseHelper.getWatchlistMovie();
     return result.map((data) => MovieTable.fromMap(data)).toList();
   }
 }

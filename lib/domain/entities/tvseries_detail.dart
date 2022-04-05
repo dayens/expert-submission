@@ -15,14 +15,14 @@ class TvSeriesDetail extends Equatable {
   // List<String> languages;
   // String lastAirDate;
   // TEpisodeToAir lastEpisodeToAir;
-  // String name;
+  String name;
   // TEpisodeToAir nextEpisodeToAir;
   // List<Network> networks;
   // int numberOfEpisodes;
   // int numberOfSeasons;
   // List<String> originCountry;
   // String originalLanguage;
-  String originalName;
+  // String originalName;
   String overview;
   double popularity;
   String? posterPath;
@@ -40,7 +40,7 @@ class TvSeriesDetail extends Equatable {
     required this.backdropPath,
     required this.genres,
     required this.id,
-    required this.originalName,
+    required this.name,
     required this.overview,
     required this.popularity,
     required this.posterPath,
@@ -57,7 +57,7 @@ class TvSeriesDetail extends Equatable {
     backdropPath,
     genres,
     id,
-    originalName,
+    name,
     overview,
     popularity,
     posterPath,

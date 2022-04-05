@@ -31,6 +31,7 @@ import 'package:ditonton/presentation/provider/top_rated_tvseries_notifier.dart'
 import 'package:ditonton/presentation/provider/tvseries_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tvseries_list_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:ditonton/presentation/provider/watchlist_tvseries_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -109,6 +110,11 @@ void init() {
           saveWatchlistTv: locator(),
     ),
   );
+  locator.registerFactory(
+        () => WatchlistTvSeriesNotifier(
+          getWatchlistTvSeries: locator()
+    ),
+  );
 
 
 
@@ -166,7 +172,8 @@ void init() {
           () => TvSeriesLocalDataSourceImpl(databaseHelper: locator()));
 
   // helper
-  locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
+  locator.registerLazySingleton<DatabaseHelperMovie>(() => DatabaseHelperMovie());
+  locator.registerLazySingleton<DatabaseHelperTvSeries>(() => DatabaseHelperTvSeries());
 
   // external
   locator.registerLazySingleton(() => http.Client());
