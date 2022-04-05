@@ -50,10 +50,10 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
             } else if (data.watchlistState == RequestState.Loaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tvSeries = data.watchlistMovies[index];
+                  final tvSeries = data.watchlistTvSeries[index];
                   return TvCard(tvSeries);
                 },
-                itemCount: data.watchlistMovies.length,
+                itemCount: data.watchlistTvSeries.length,
               );
             } else {
               return Center(

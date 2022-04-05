@@ -108,7 +108,6 @@ void init() {
       getRecommendedTvSeries: locator(),
       removeWatchlistTv: locator(),
       getWatchListStatusTvSeries: locator(),
-      getWatchlistTvSeries: locator(),
       saveWatchlistTv: locator(),
     ),
   );

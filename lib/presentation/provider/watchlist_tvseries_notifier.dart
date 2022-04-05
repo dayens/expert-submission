@@ -6,7 +6,7 @@ import '../../common/state_enum.dart';
 
 class WatchlistTvSeriesNotifier extends ChangeNotifier {
   var _watchlistTvSeries = <TvSeries>[];
-  List<TvSeries> get watchlistMovies => _watchlistTvSeries;
+  List<TvSeries> get watchlistTvSeries => _watchlistTvSeries;
 
   var _watchlistState = RequestState.Empty;
   RequestState get watchlistState => _watchlistState;

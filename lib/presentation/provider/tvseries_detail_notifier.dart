@@ -3,7 +3,6 @@ import 'package:ditonton/domain/entities/tvseries_detail.dart';
 import 'package:ditonton/domain/usecases/get_recommended_tvseries.dart';
 import 'package:ditonton/domain/usecases/get_tvseries_detail.dart';
 import 'package:ditonton/domain/usecases/get_watchlist_status_tvseries.dart';
-import 'package:ditonton/domain/usecases/get_watchlist_tvseries.dart';
 import 'package:ditonton/domain/usecases/remove_watchlist_tvseries.dart';
 import 'package:flutter/material.dart';
 import '../../common/state_enum.dart';
@@ -18,12 +17,10 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
   final RemoveWatchlistTv removeWatchlistTv;
   final SaveWatchlistTv saveWatchlistTv;
   final GetWatchListStatusTvSeries getWatchListStatusTvSeries;
-  final GetWatchlistTvSeries getWatchlistTvSeries;
 
   TvSeriesDetailNotifier({
     required this.getTvSeriesDetail,
     required this.getRecommendedTvSeries,
-    required this.getWatchlistTvSeries,
     required this.getWatchListStatusTvSeries,
     required this.saveWatchlistTv,
     required this.removeWatchlistTv,
