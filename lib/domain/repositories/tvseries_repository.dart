@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/domain/entities/tvseries.dart';
-
 import '../../common/failure.dart';
 import '../entities/tvseries_detail.dart';
 

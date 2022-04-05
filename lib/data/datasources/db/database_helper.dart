@@ -78,36 +78,6 @@ class DatabaseHelperMovie {
 
     return results;
   }
-
-  //TvSeries
-  // Future<int> insertWatchlistTv(TvSeriesTable tvSeriesTable) async {
-  //   final db = await database;
-  //   return await db!.insert(_tblWatchlist, tvSeriesTable.toJson());
-  // }
-  //
-  // Future<int> removeWatchlistTv(TvSeriesTable tvSeriesTable) async {
-  //   final db = await database;
-  //   return await db!.delete(
-  //     _tblWatchlist,
-  //     where: 'id = ?',
-  //     whereArgs: [tvSeriesTable.id],
-  //   );
-  // }
-  //
-  // Future<Map<String, dynamic>?> getTvById(int id) async {
-  //   final db = await database;
-  //   final results = await db!.query(
-  //     _tblWatchlist,
-  //     where: 'id = ?',
-  //     whereArgs: [id],
-  //   );
-  //
-  //   if (results.isNotEmpty) {
-  //     return results.first;
-  //   } else {
-  //     return null;
-  //   }
-  // }
 }
 
 class DatabaseHelperTvSeries {
