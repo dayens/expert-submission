@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/data/datasources/tvseries_remote_data_source.dart';
 import 'package:ditonton/data/models/tvseries_response.dart';
@@ -81,34 +82,37 @@ void main() {
           expect(() => call, throwsA(isA<ServerException>()));
         });
   });
-  //
-  // group('get Top Rated Movies', () {
-  //   final tMovieList = MovieResponse.fromJson(
-  //       json.decode(readJson('dummy_data/top_rated.json')))
-  //       .movieList;
-  //
-  //   test('should return list of movies when response code is 200 ', () async {
-  //     // arrange
-  //     when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/top_rated?$API_KEY')))
-  //         .thenAnswer((_) async =>
-  //         http.Response(readJson('dummy_data/top_rated.json'), 200));
-  //     // act
-  //     final result = await dataSource.getTopRatedMovies();
-  //     // assert
-  //     expect(result, tMovieList);
-  //   });
-  //
-  //   test('should throw ServerException when response code is other than 200',
-  //           () async {
-  //         // arrange
-  //         when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/top_rated?$API_KEY')))
-  //             .thenAnswer((_) async => http.Response('Not Found', 404));
-  //         // act
-  //         final call = dataSource.getTopRatedMovies();
-  //         // assert
-  //         expect(() => call, throwsA(isA<ServerException>()));
-  //       });
-  // });
+
+  group('get Top Rated TvSeries', () {
+    final tTvSeriesList = TvSeriesResponse.fromJson(
+        json.decode(readJson('dummy_data/top_rated_tv.json')))
+        .tvSeriesList;
+
+    test('should return list of TvSeries when response is success (200)',
+            () async {
+          // arrange
+          when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY')))
+              .thenAnswer((_) async =>
+              http.Response(readJson('dummy_data/top_rated_tv.json'), 200, headers: {
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+              }));
+          // act
+          final result = await dataSource.getTopRatedTvSeries();
+          // assert
+          expect(result, tTvSeriesList);
+        });
+
+    test('should throw ServerException when response code is other than 200',
+            () async {
+          // arrange
+          when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY')))
+              .thenAnswer((_) async => http.Response('Not Found', 404));
+          // act
+          final call = dataSource.getTopRatedTvSeries();
+          // assert
+          expect(() => call, throwsA(isA<ServerException>()));
+        });
+  });
   //
   // group('get movie detail', () {
   //   final tId = 1;
