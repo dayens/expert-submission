@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ditonton/data/models/tvseries_model.dart';
 import 'package:equatable/equatable.dart';
 

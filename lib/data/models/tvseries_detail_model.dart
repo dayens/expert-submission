@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/domain/entities/tvseries_detail.dart';
 import 'package:equatable/equatable.dart';
@@ -68,7 +70,6 @@ class TvSeriesDetailResponse extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         adult,
         backdropPath,

@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import '../../common/constants.dart';
 
 class SubHeading extends StatelessWidget {
-  // const SubHeading({Key? key}) : super(key: key);
-
-  String title;
-  Function() onTap;
+  final String title;
+  final Function() onTap;
 
   SubHeading({required this.title, required this.onTap});
 
