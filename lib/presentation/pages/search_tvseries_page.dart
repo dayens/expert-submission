@@ -15,60 +15,54 @@ class SearchTvSeriesPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Search'),
       ),
-      body: Consumer<TvSeriesSearchNotifier>(
-        builder: (context, data, child) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search title',
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(),
-                  ),
-                  onChanged: (String query) {
-                    if (query.isNotEmpty) {
-                      data.fetchTvSeriesSearch(query);
-                    }
-                  },
-                  controller: _searchControl,
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Search Result',
-                  style: kHeading6,
-                ),
-                Consumer<TvSeriesSearchNotifier>(
-                  builder: (context, data, child) {
-                    if (data.state == RequestState.Loading) {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    } else if (data.state == RequestState.Loaded) {
-                      final result = data.searchResult;
-                      return Expanded(
-                        child: ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          itemBuilder: (context, index) {
-                            final tv = data.searchResult[index];
-                            return TvCard(tv);
-                          },
-                          itemCount: result.length,
-                        ),
-                      );
-                    } else {
-                      return Expanded(
-                        child: Container(),
-                      );
-                    }
-                  },
-                ),
-              ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search title',
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(),
             ),
-          );
-        },
+            onChanged: (String query) {
+              if (query.isNotEmpty) {
+                Provider.of<TvSeriesSearchNotifier>(context, listen: false)
+                    .fetchTvSeriesSearch(query);
+              }
+            },
+            controller: _searchControl,
+          ),
+          SizedBox(height: 16),
+          Text(
+            'Search Result',
+            style: kHeading6,
+          ),
+          Consumer<TvSeriesSearchNotifier>(
+            builder: (context, data, child) {
+              if (data.state == RequestState.Loading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (data.state == RequestState.Loaded) {
+                final result = data.searchResult;
+                return Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemBuilder: (context, index) {
+                      final tv = data.searchResult[index];
+                      return TvCard(tv);
+                    },
+                    itemCount: result.length,
+                  ),
+                );
+              } else {
+                return Expanded(
+                  child: Container(),
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }

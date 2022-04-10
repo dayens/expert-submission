@@ -38,7 +38,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
     return Scaffold(
       drawer: DrawerWidgets(
         onTapMovie: () {
-          Navigator.pushNamed(context, HomeMoviePage.ROUTE_NAME);
+          Navigator.pushReplacementNamed(context, HomeMoviePage.ROUTE_NAME);
         },
         onTapTv: () {
           Navigator.pop(context);

@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:equatable/equatable.dart';
 
@@ -20,19 +18,19 @@ class TvSeriesModel extends Equatable {
     required this.voteCount,
   });
 
-  String? backdropPath;
-  String? firstAirDate;
-  List<int> genreIds;
-  int id;
-  String? name;
-  List<String> originCountry;
-  String originalLanguage;
-  String originalName;
-  String overview;
-  double popularity;
-  String? posterPath;
-  double voteAverage;
-  int voteCount;
+  final String? backdropPath;
+  final String? firstAirDate;
+  final List<int> genreIds;
+  final int id;
+  final String? name;
+  final List<String> originCountry;
+  final String originalLanguage;
+  final String originalName;
+  final String overview;
+  final double popularity;
+  final String? posterPath;
+  final double voteAverage;
+  final int voteCount;
 
   factory TvSeriesModel.fromJson(Map<String, dynamic> json) => TvSeriesModel(
         backdropPath: json["backdrop_path"],

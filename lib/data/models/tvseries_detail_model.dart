@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/domain/entities/tvseries_detail.dart';
 import 'package:equatable/equatable.dart';
@@ -18,16 +16,16 @@ class TvSeriesDetailResponse extends Equatable {
     required this.voteCount,
   });
 
-  bool adult;
-  String backdropPath;
-  List<GenreModel> genres;
-  int id;
-  String name;
-  String overview;
-  double popularity;
-  String posterPath;
-  double voteAverage;
-  int voteCount;
+  final bool adult;
+  final String backdropPath;
+  final List<GenreModel> genres;
+  final int id;
+  final String name;
+  final String overview;
+  final double popularity;
+  final String posterPath;
+  final double voteAverage;
+  final int voteCount;
 
   factory TvSeriesDetailResponse.fromJson(Map<String, dynamic> json) =>
       TvSeriesDetailResponse(
