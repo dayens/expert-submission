@@ -6,7 +6,6 @@ import '../../common/utils.dart';
 import '../provider/watchlist_tvseries_notifier.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/watchlist-tvseries';
 
   @override
   _WatchlistTvSeriesPageState createState() => _WatchlistTvSeriesPageState();
