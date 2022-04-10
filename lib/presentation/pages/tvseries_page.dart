@@ -1,19 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvseries.dart';
+import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/popular_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/search_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries_detail_page.dart';
+import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
 import '../provider/tvseries_list_notifier.dart';
+import '../widgets/drawer.dart';
 
 class TvSeriesPage extends StatefulWidget {
   const TvSeriesPage({Key? key}) : super(key: key);
-  static const ROUTE_NAME = '/tvseries-page';
+  static const ROUTE_NAME = '/tv-series-page';
 
   @override
   _TvSeriesPageState createState() => _TvSeriesPageState();
@@ -33,6 +36,17 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerWidgets(
+        onTapMovie: () {
+          Navigator.pushNamed(context, HomeMoviePage.ROUTE_NAME);
+        },
+        onTapTv: () {
+          Navigator.pop(context);
+        },
+        onTapWatchlist: () {
+          Navigator.pushNamed(context, WatchlistPage.ROUTE_NAME);
+        },
+      ),
       appBar: AppBar(
         title: Text('TV Series'),
         actions: [

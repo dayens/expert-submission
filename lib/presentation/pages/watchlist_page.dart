@@ -29,8 +29,8 @@ class _WatchlistPageState extends State<WatchlistPage> {
   }
 
   final List<Widget> _listWidget = [
-     WatchlistMoviesPage(),
-     WatchlistTvSeriesPage()
+    WatchlistMoviesPage(),
+    WatchlistTvSeriesPage()
   ];
 
   void _onBottomNavTapped(int index) {
@@ -40,13 +40,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
   }
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.movie),
-      label: _movieText
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.tv),
-      label: _tvText
-    )
+    BottomNavigationBarItem(icon: Icon(Icons.movie), label: _movieText),
+    BottomNavigationBarItem(icon: Icon(Icons.tv), label: _tvText)
   ];
 }

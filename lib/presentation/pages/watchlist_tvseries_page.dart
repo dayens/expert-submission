@@ -6,7 +6,6 @@ import '../../common/utils.dart';
 import '../provider/watchlist_tvseries_notifier.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
-
   @override
   _WatchlistTvSeriesPageState createState() => _WatchlistTvSeriesPageState();
 }

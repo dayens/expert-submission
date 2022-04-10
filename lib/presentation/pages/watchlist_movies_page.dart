@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class WatchlistMoviesPage extends StatefulWidget {
-
   @override
   _WatchlistMoviesPageState createState() => _WatchlistMoviesPageState();
 }
