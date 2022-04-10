@@ -40,7 +40,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           Navigator.pop(context);
         },
         onTapTv: () {
-          Navigator.pushNamed(context, TvSeriesPage.ROUTE_NAME);
+          Navigator.pushReplacementNamed(context, TvSeriesPage.ROUTE_NAME);
         },
         onTapWatchlist: () {
           Navigator.pushNamed(context, WatchlistPage.ROUTE_NAME);
