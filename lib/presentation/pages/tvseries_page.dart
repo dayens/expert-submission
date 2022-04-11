@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvseries.dart';
+import 'package:ditonton/presentation/bloc/tvseries/tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/tvseries_event.dart';
+import 'package:ditonton/presentation/bloc/tvseries/tvseries_state.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/popular_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/search_tvseries_page.dart';
@@ -8,6 +11,7 @@ import 'package:ditonton/presentation/pages/tvseries_detail_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:ditonton/presentation/widgets/sub_heading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../common/state_enum.dart';
@@ -28,9 +32,10 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
     super.initState();
     Future.microtask(
         () => Provider.of<TvSeriesListNotifier>(context, listen: false)
-          ..fetchAiringTodayTvSeries()
+          // ..fetchAiringTodayTvSeries()
           ..fetchPopularTvSeries()
           ..fetchTopRatedTvSeries());
+    Future.microtask(() => context.read<AiringTodayBloc>().add(AiringToday()));
   }
 
   @override
@@ -68,14 +73,19 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                 'Airing Today',
                 style: kHeading6,
               ),
-              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.nowAiringState;
-                if (state == RequestState.Loading) {
+              BlocBuilder<AiringTodayBloc, AiringTodayState>(
+                  builder: (context, state) {
+                if (state is AiringTodayLoading) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state == RequestState.Loaded) {
-                  return TvSeriesList(data.airingTodayTvSeries);
+                } else if (state is AiringTodayHasData) {
+                  final result = state.result;
+                  return TvSeriesList(result);
+                } else if (state is AiringTodayError) {
+                  return Center(
+                    child: Text(state.message),
+                  );
                 } else {
                   return Text('Failed');
                 }
