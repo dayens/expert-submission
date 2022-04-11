@@ -13,12 +13,12 @@ import 'search_bloc_test.mocks.dart';
 
 @GenerateMocks([SearchMovies])
 void main() {
-  late SearchBloc searchBloc;
+  late SearchBlocMovie searchBloc;
   late MockSearchMovies mockSearchMovies;
 
   setUp(() {
     mockSearchMovies = MockSearchMovies();
-    searchBloc = SearchBloc(mockSearchMovies);
+    searchBloc = SearchBlocMovie(mockSearchMovies);
   });
 
   test('initial state should be empty', () {
@@ -44,7 +44,7 @@ void main() {
   final tMovieList = <Movie>[tMovieModel];
   final tQuery = 'spiderman';
 
-  blocTest<SearchBloc, SearchState>(
+  blocTest<SearchBlocMovie, SearchState>(
     'Should emit [Loading, HasData] when data is gotten successfully',
     build: () {
       when(mockSearchMovies.execute(tQuery))
@@ -62,7 +62,7 @@ void main() {
     },
   );
 
-  blocTest<SearchBloc, SearchState>(
+  blocTest<SearchBlocMovie, SearchState>(
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockSearchMovies.execute(tQuery))

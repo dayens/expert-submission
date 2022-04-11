@@ -49,7 +49,12 @@ final locator = GetIt.instance;
 void init() {
   // bloc
   locator.registerFactory(
-        () => SearchBloc(
+    () => SearchBlocMovie(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => SearchBlocTvSeries(
       locator(),
     ),
   );
