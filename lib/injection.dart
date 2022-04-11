@@ -60,7 +60,17 @@ void init() {
     ),
   );
   locator.registerFactory(
-    () => AiringTodayBloc(
+    () => AiringTodayTvSeriesBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => PopularTvSeriesBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => TopRatedTvSeriesBloc(
       locator(),
     ),
   );

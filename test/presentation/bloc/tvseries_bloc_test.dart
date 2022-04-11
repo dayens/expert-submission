@@ -13,16 +13,16 @@ import 'tvseries_bloc_test.mocks.dart';
 
 @GenerateMocks([GetAiringTodayTvSeries])
 void main() {
-  late AiringTodayBloc airingTodayBloc;
+  late AiringTodayTvSeriesBloc airingTodayBloc;
   late MockGetAiringTodayTvSeries mockGetAiringTodayTvSeries;
 
   setUp(() {
     mockGetAiringTodayTvSeries = MockGetAiringTodayTvSeries();
-    airingTodayBloc = AiringTodayBloc(mockGetAiringTodayTvSeries);
+    airingTodayBloc = AiringTodayTvSeriesBloc(mockGetAiringTodayTvSeries);
   });
 
   test('initial state should be empty', () {
-    expect(airingTodayBloc.state, AiringTodayEmpty());
+    expect(airingTodayBloc.state, AiringTodayTvSeriesEmpty());
   });
 
   final tTvSeriesModel = TvSeries(
@@ -43,34 +43,34 @@ void main() {
 
   final tTvSeriesList = <TvSeries>[tTvSeriesModel];
 
-  blocTest<AiringTodayBloc, AiringTodayState>(
+  blocTest<AiringTodayTvSeriesBloc, AiringTodayTvSeriesState>(
     'Should emit [Loading, HasData] when data is gotten successfully',
     build: () {
       when(mockGetAiringTodayTvSeries.execute())
           .thenAnswer((_) async => Right(tTvSeriesList));
       return airingTodayBloc;
     },
-    act: (bloc) => bloc.add(AiringToday()),
+    act: (bloc) => bloc.add(AiringTodayTvSeries()),
     expect: () => [
-      AiringTodayLoading(),
-      AiringTodayHasData(tTvSeriesList),
+      AiringTodayTvSeriesLoading(),
+      AiringTodayTvSeriesHasData(tTvSeriesList),
     ],
     verify: (bloc) {
       verify(mockGetAiringTodayTvSeries.execute());
     },
   );
 
-  blocTest<AiringTodayBloc, AiringTodayState>(
+  blocTest<AiringTodayTvSeriesBloc, AiringTodayTvSeriesState>(
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockGetAiringTodayTvSeries.execute())
           .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       return airingTodayBloc;
     },
-    act: (bloc) => bloc.add(AiringToday()),
+    act: (bloc) => bloc.add(AiringTodayTvSeries()),
     expect: () => [
-      AiringTodayLoading(),
-      AiringTodayError('Server Failure'),
+      AiringTodayTvSeriesLoading(),
+      AiringTodayTvSeriesError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockGetAiringTodayTvSeries.execute());

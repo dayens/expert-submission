@@ -87,7 +87,13 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<SearchBlocTvSeries>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<AiringTodayBloc>(),
+          create: (_) => di.locator<AiringTodayTvSeriesBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<PopularTvSeriesBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedTvSeriesBloc>(),
         )
       ],
       child: MaterialApp(
