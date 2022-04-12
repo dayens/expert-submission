@@ -8,7 +8,6 @@ import '../widgets/tvseries_card.dart';
 
 class SearchTvSeriesPage extends StatelessWidget {
   static const ROUTE_NAME = '/search-tvseries';
-  final TextEditingController _searchControl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,38 +29,12 @@ class SearchTvSeriesPage extends StatelessWidget {
                 context.read<SearchBlocTvSeries>().add(OnQueryChanged(query));
               }
             },
-            controller: _searchControl,
           ),
           SizedBox(height: 16),
           Text(
             'Search Result',
             style: kHeading6,
           ),
-          // Consumer<TvSeriesSearchNotifier>(
-          //   builder: (context, data, child) {
-          //     if (data.state == RequestState.Loading) {
-          //       return Center(
-          //         child: CircularProgressIndicator(),
-          //       );
-          //     } else if (data.state == RequestState.Loaded) {
-          //       final result = data.searchResult;
-          //       return Expanded(
-          //         child: ListView.builder(
-          //           padding: const EdgeInsets.all(8),
-          //           itemBuilder: (context, index) {
-          //             final tv = data.searchResult[index];
-          //             return TvCard(tv);
-          //           },
-          //           itemCount: result.length,
-          //         ),
-          //       );
-          //     } else {
-          //       return Expanded(
-          //         child: Container(),
-          //       );
-          //     }
-          //   },
-          // ),
           BlocBuilder<SearchBlocTvSeries, SearchState>(
               builder: (context, state) {
             if (state is SearchLoading) {
