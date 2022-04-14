@@ -1,9 +1,11 @@
 import 'package:ditonton/domain/usecases/get_now_playing_movies.dart';
+import 'package:ditonton/domain/usecases/get_popular_movies.dart';
+import 'package:ditonton/domain/usecases/get_top_rated_movies.dart';
 import 'package:ditonton/presentation/bloc/movies/movies_event.dart';
 import 'package:ditonton/presentation/bloc/movies/movies_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-//AiringTodayTvSeries
+//NowPlayingMovies
 class NowPlayingMoviesBloc
     extends Bloc<NowPlayingMoviesEvent, NowPlayingMoviesState> {
   final GetNowPlayingMovies _getNowPlayingMovies;
@@ -20,36 +22,33 @@ class NowPlayingMoviesBloc
   }
 }
 
-// //PopularTvSeries
-// class PopularTvSeriesBloc
-//     extends Bloc<PopularTvSeriesEvent, PopularTvSeriesState> {
-//   final GetPopularTvSeries _getPopularTvSeries;
-//
-//   PopularTvSeriesBloc(this._getPopularTvSeries)
-//       : super(PopularTvSeriesEmpty()) {
-//     on<PopularTvSeries>((event, emit) async {
-//       emit(PopularTvSeriesLoading());
-//       final result = await _getPopularTvSeries.execute();
-//
-//       result.fold((failure) => emit(PopularTvSeriesError(failure.message)),
-//           (result) => emit(PopularTvSeriesHasData(result)));
-//     });
-//   }
-// }
-//
-// //TopRatedTvSeries
-// class TopRatedTvSeriesBloc
-//     extends Bloc<TopRatedTvSeriesEvent, TopRatedTvSeriesState> {
-//   final GetTopRatedTvSeries _getTopRatedTvSeries;
-//
-//   TopRatedTvSeriesBloc(this._getTopRatedTvSeries)
-//       : super(TopRatedTvSeriesEmpty()) {
-//     on<TopRatedTvSeries>((event, emit) async {
-//       emit(TopRatedTvSeriesLoading());
-//       final result = await _getTopRatedTvSeries.execute();
-//
-//       result.fold((failure) => emit(TopRatedTvSeriesError(failure.message)),
-//           (result) => emit(TopRatedTvSeriesHasData(result)));
-//     });
-//   }
-// }
+//PopularMovies
+class PopularMoviesBloc extends Bloc<PopularMoviesEvent, PopularMoviesState> {
+  final GetPopularMovies _getPopularMovies;
+
+  PopularMoviesBloc(this._getPopularMovies) : super(PopularMoviesEmpty()) {
+    on<PopularMovies>((event, emit) async {
+      emit(PopularMoviesLoading());
+      final result = await _getPopularMovies.execute();
+
+      result.fold((failure) => emit(PopularMoviesError(failure.message)),
+          (result) => emit(PopularMoviesHasData(result)));
+    });
+  }
+}
+
+//TopRatedMovies
+class TopRatedMoviesBloc
+    extends Bloc<TopRatedMoviesEvent, TopRatedMoviesState> {
+  final GetTopRatedMovies _getTopRatedMovies;
+
+  TopRatedMoviesBloc(this._getTopRatedMovies) : super(TopRatedMoviesEmpty()) {
+    on<TopRatedMovies>((event, emit) async {
+      emit(TopRatedMoviesLoading());
+      final result = await _getTopRatedMovies.execute();
+
+      result.fold((failure) => emit(TopRatedMoviesError(failure.message)),
+          (result) => emit(TopRatedMoviesHasData(result)));
+    });
+  }
+}

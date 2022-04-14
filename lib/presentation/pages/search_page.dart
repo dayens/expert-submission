@@ -56,15 +56,11 @@ class SearchPage extends StatelessWidget {
                     ),
                   );
                 } else if (state is SearchError) {
-                  return Expanded(
-                    child: Center(
-                      child: Text(state.message),
-                    ),
+                  return Center(
+                    child: Text(state.message),
                   );
                 } else {
-                  return Expanded(
-                    child: Container(),
-                  );
+                  return Container();
                 }
               },
             ),

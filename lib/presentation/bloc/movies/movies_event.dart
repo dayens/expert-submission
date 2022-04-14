@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-//AiringTodayTvSeries
+//NowPlayingMovies
 abstract class NowPlayingMoviesEvent extends Equatable {
   const NowPlayingMoviesEvent();
 
@@ -13,28 +13,28 @@ class NowPlayingMovies extends NowPlayingMoviesEvent {
   List<Object> get props => [];
 }
 
-// //PoularTvSeries
-// abstract class PopularTvSeriesEvent extends Equatable {
-//   const PopularTvSeriesEvent();
-//
-//   @override
-//   List<Object> get props => [];
-// }
-//
-// class PopularTvSeries extends PopularTvSeriesEvent {
-//   @override
-//   List<Object> get props => [];
-// }
-//
-// //TopRatedTvSeries
-// abstract class TopRatedTvSeriesEvent extends Equatable {
-//   const TopRatedTvSeriesEvent();
-//
-//   @override
-//   List<Object> get props => [];
-// }
-//
-// class TopRatedTvSeries extends TopRatedTvSeriesEvent {
-//   @override
-//   List<Object> get props => [];
-// }
+//PopularMovies
+abstract class PopularMoviesEvent extends Equatable {
+  const PopularMoviesEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class PopularMovies extends PopularMoviesEvent {
+  @override
+  List<Object> get props => [];
+}
+
+//TopRatedMovies
+abstract class TopRatedMoviesEvent extends Equatable {
+  const TopRatedMoviesEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class TopRatedMovies extends TopRatedMoviesEvent {
+  @override
+  List<Object> get props => [];
+}

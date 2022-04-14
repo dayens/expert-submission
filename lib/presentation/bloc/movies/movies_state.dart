@@ -1,7 +1,7 @@
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:equatable/equatable.dart';
 
-//AiringTodayTvSeries
+//NowPlayingMovies
 abstract class NowPlayingMoviesState extends Equatable {
   const NowPlayingMoviesState();
 
@@ -31,62 +31,62 @@ class NowPlayingMoviesHasData extends NowPlayingMoviesState {
   List<Object> get props => [result];
 }
 
-// //PopularTvSeries
-// abstract class PopularTvSeriesState extends Equatable {
-//   const PopularTvSeriesState();
-//
-//   @override
-//   List<Object> get props => [];
-// }
-//
-// class PopularTvSeriesEmpty extends PopularTvSeriesState {}
-//
-// class PopularTvSeriesLoading extends PopularTvSeriesState {}
-//
-// class PopularTvSeriesError extends PopularTvSeriesState {
-//   final String message;
-//
-//   PopularTvSeriesError(this.message);
-//
-//   @override
-//   List<Object> get props => [message];
-// }
-//
-// class PopularTvSeriesHasData extends PopularTvSeriesState {
-//   final List<TvSeries> result;
-//
-//   PopularTvSeriesHasData(this.result);
-//
-//   @override
-//   List<Object> get props => [result];
-// }
-//
-// //TopRatedTvSeries
-// abstract class TopRatedTvSeriesState extends Equatable {
-//   const TopRatedTvSeriesState();
-//
-//   @override
-//   List<Object> get props => [];
-// }
-//
-// class TopRatedTvSeriesEmpty extends TopRatedTvSeriesState {}
-//
-// class TopRatedTvSeriesLoading extends TopRatedTvSeriesState {}
-//
-// class TopRatedTvSeriesError extends TopRatedTvSeriesState {
-//   final String message;
-//
-//   TopRatedTvSeriesError(this.message);
-//
-//   @override
-//   List<Object> get props => [message];
-// }
-//
-// class TopRatedTvSeriesHasData extends TopRatedTvSeriesState {
-//   final List<TvSeries> result;
-//
-//   TopRatedTvSeriesHasData(this.result);
-//
-//   @override
-//   List<Object> get props => [result];
-// }
+//PopularMovies
+abstract class PopularMoviesState extends Equatable {
+  const PopularMoviesState();
+
+  @override
+  List<Object> get props => [];
+}
+
+class PopularMoviesEmpty extends PopularMoviesState {}
+
+class PopularMoviesLoading extends PopularMoviesState {}
+
+class PopularMoviesError extends PopularMoviesState {
+  final String message;
+
+  PopularMoviesError(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+class PopularMoviesHasData extends PopularMoviesState {
+  final List<Movie> result;
+
+  PopularMoviesHasData(this.result);
+
+  @override
+  List<Object> get props => [result];
+}
+
+//TopRatedMovies
+abstract class TopRatedMoviesState extends Equatable {
+  const TopRatedMoviesState();
+
+  @override
+  List<Object> get props => [];
+}
+
+class TopRatedMoviesEmpty extends TopRatedMoviesState {}
+
+class TopRatedMoviesLoading extends TopRatedMoviesState {}
+
+class TopRatedMoviesError extends TopRatedMoviesState {
+  final String message;
+
+  TopRatedMoviesError(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+class TopRatedMoviesHasData extends TopRatedMoviesState {
+  final List<Movie> result;
+
+  TopRatedMoviesHasData(this.result);
+
+  @override
+  List<Object> get props => [result];
+}

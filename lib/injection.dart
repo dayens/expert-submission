@@ -76,6 +76,8 @@ void init() {
     ),
   );
   locator.registerFactory(() => NowPlayingMoviesBloc(locator()));
+  locator.registerFactory(() => PopularMoviesBloc(locator()));
+  locator.registerFactory(() => TopRatedMoviesBloc(locator()));
 
   // provider
   locator.registerFactory(
