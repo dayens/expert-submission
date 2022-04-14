@@ -21,6 +21,7 @@ import 'package:ditonton/domain/usecases/get_watchlist_status.dart';
 import 'package:ditonton/domain/usecases/remove_watchlist.dart';
 import 'package:ditonton/domain/usecases/save_watchlist.dart';
 import 'package:ditonton/domain/usecases/search_movies.dart';
+import 'package:ditonton/presentation/bloc/movies/movies_bloc.dart';
 import 'package:ditonton/presentation/bloc/search/search_bloc.dart';
 import 'package:ditonton/presentation/bloc/tvseries/tvseries_bloc.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
@@ -74,6 +75,7 @@ void init() {
       locator(),
     ),
   );
+  locator.registerFactory(() => NowPlayingMoviesBloc(locator()));
 
   // provider
   locator.registerFactory(

@@ -1,6 +1,7 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/injection.dart' as di;
+import 'package:ditonton/presentation/bloc/movies/movies_bloc.dart';
 import 'package:ditonton/presentation/bloc/search/search_bloc.dart';
 import 'package:ditonton/presentation/bloc/tvseries/tvseries_bloc.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
@@ -62,6 +63,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.locator<SearchBlocMovie>(),
+        ),
+        BlocProvider(
+            create: (_) => di.locator<NowPlayingMoviesBloc>()
         ),
 
         //TvSeries
