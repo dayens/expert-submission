@@ -17,14 +17,12 @@ import 'package:ditonton/presentation/pages/tvseries_detail_page.dart';
 import 'package:ditonton/presentation/pages/tvseries_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_tvseries_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_tvseries_notifier.dart';
 import 'package:ditonton/presentation/provider/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvseries_list_notifier.dart';
 import 'package:ditonton/presentation/provider/tvseries_search_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_tvseries_notifier.dart';
@@ -43,9 +41,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
-        ),
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieDetailNotifier>(),
         ),
@@ -69,9 +64,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<TopRatedMoviesBloc>()),
 
         //TvSeries
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvSeriesListNotifier>(),
-        ),
         ChangeNotifierProvider(
           create: (_) => di.locator<PopularTvSeriesNotifier>(),
         ),
