@@ -1,5 +1,5 @@
-import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_tvseries_page.dart';
+import 'package:ditonton/presentation/pages/watchlist/watchlist_movies_page.dart';
+import 'package:ditonton/presentation/pages/watchlist/watchlist_tvseries_page.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatefulWidget {

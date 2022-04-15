@@ -1,9 +1,9 @@
 import 'package:ditonton/presentation/widgets/tvseries_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../common/state_enum.dart';
-import '../../common/utils.dart';
-import '../provider/watchlist_tvseries_notifier.dart';
+import '../../../common/state_enum.dart';
+import '../../../common/utils.dart';
+import '../../provider/watchlist_tvseries_notifier.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
   @override

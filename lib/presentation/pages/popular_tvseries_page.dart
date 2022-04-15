@@ -1,8 +1,9 @@
+import 'package:ditonton/presentation/bloc/tvseries/tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/tvseries_event.dart';
+import 'package:ditonton/presentation/bloc/tvseries/tvseries_state.dart';
+import 'package:ditonton/presentation/widgets/tvseries_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../common/state_enum.dart';
-import '../provider/popular_tvseries_notifier.dart';
-import '../widgets/tvseries_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PopularTvSeriesPage extends StatefulWidget {
   static const ROUTE_NAME = '/popular-tvseries';
@@ -15,9 +16,9 @@ class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        Provider.of<PopularTvSeriesNotifier>(context, listen: false)
-            .fetchPopularTvSeries());
+    Future.microtask(() {
+      context.read<PopularTvSeriesBloc>().add(PopularTvSeries());
+    });
   }
 
   @override
@@ -28,28 +29,30 @@ class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<PopularTvSeriesNotifier>(
-          builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (data.state == RequestState.Loaded) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final tv = data.tvSeries[index];
-                  return TvCard(tv);
-                },
-                itemCount: data.tvSeries.length,
-              );
-            } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message),
-              );
-            }
-          },
-        ),
+        child: BlocBuilder<PopularTvSeriesBloc, PopularTvSeriesState>(
+            builder: (context, state) {
+          if (state is PopularTvSeriesLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is PopularTvSeriesHasData) {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                final result = state.result[index];
+                return TvCard(result);
+              },
+              itemCount: state.result.length,
+            );
+          } else if (state is PopularTvSeriesError) {
+            return Center(
+              child: Text(state.message),
+            );
+          } else {
+            return Center(
+              child: Text('Failed'),
+            );
+          }
+        }),
       ),
     );
   }
