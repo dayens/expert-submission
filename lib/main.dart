@@ -2,6 +2,7 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/presentation/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie_detail/recommennded/movie_recommended_bloc.dart';
 import 'package:ditonton/presentation/bloc/movies/movies_bloc.dart';
 import 'package:ditonton/presentation/bloc/search/search_bloc.dart';
 import 'package:ditonton/presentation/bloc/tvseries/tvseries_bloc.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<PopularMoviesBloc>()),
         BlocProvider(create: (_) => di.locator<TopRatedMoviesBloc>()),
         BlocProvider(create: (_) => di.locator<MovieDetilBloc>()),
+        BlocProvider(create: (_) => di.locator<MovieRecommendedBloc>()),
 
         //TvSeries
         ChangeNotifierProvider(
