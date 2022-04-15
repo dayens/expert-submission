@@ -7,6 +7,20 @@ abstract class MovieDetailEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class MovieDetailGetId extends MovieDetailEvent {
+  final int id;
+
+  MovieDetailGetId(this.id);
+
+  @override
+  List<Object> get props => [id];
+}
+
+class LoadWatchlitStatus extends MovieDetailEvent {
+  @override
+  List<Object> get props => [];
+}
+
 class AddWatchlist extends MovieDetailEvent {
   @override
   List<Object> get props => [];
