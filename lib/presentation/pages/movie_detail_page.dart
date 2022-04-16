@@ -144,9 +144,9 @@ class _DetailContentState extends State<DetailContent> {
                                     .select<WatchlistMovieBloc, String>(
                                         (value) {
                                   if (value.state is WatchlistMovieMessage) {
-                                    return watchlistAddSuccessMessage;
-                                  } else {
                                     return watchlistRemoveSuccessMessage;
+                                  } else {
+                                    return watchlistAddSuccessMessage;
                                   }
                                 });
 

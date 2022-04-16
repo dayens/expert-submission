@@ -1,3 +1,4 @@
+import 'package:ditonton/domain/entities/movie.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class WatchlistMovieState extends Equatable {
@@ -36,4 +37,13 @@ class WatchlistMovieMessage extends WatchlistMovieState {
 
   @override
   List<Object> get props => [message];
+}
+
+class WatchlistMovieHasList extends WatchlistMovieState {
+  final List<Movie> movie;
+
+  WatchlistMovieHasList(this.movie);
+
+  @override
+  List<Object?> get props => [movie];
 }

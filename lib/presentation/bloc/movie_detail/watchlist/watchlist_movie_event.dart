@@ -34,3 +34,8 @@ class WatchlistMovieRemove extends WatchlistMovieEvent {
   @override
   List<Object> get props => [movie];
 }
+
+class WatchlistMovieList extends WatchlistMovieEvent {
+  @override
+  List<Object> get props => [];
+}
