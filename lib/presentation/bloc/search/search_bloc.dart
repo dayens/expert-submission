@@ -1,4 +1,5 @@
 import 'package:ditonton/domain/usecases/search_tvseries.dart';
+import 'package:ditonton/presentation/bloc/search/debounce.dart';
 import 'package:ditonton/presentation/bloc/search/search_event.dart';
 import 'package:ditonton/presentation/bloc/search/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,7 @@ class SearchBlocMovie extends Bloc<SearchEvent, SearchState> {
           emit(SearchHasData(data));
         },
       );
-    });
+    }, transformer: debounce(const Duration(milliseconds: 500)));
   }
 }
 
@@ -44,6 +45,6 @@ class SearchBlocTvSeries extends Bloc<SearchEvent, SearchState> {
           emit(SearchHasDataTvSeries(data));
         },
       );
-    });
+    }, transformer: debounce(const Duration(milliseconds: 500)));
   }
 }
