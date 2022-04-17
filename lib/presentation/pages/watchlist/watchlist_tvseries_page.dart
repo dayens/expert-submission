@@ -1,11 +1,14 @@
+import 'package:ditonton/common/utils.dart';
+import 'package:ditonton/presentation/bloc/tvseries_detail/watchlist/watchlist_tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries_detail/watchlist/watchlist_tvseries_event.dart';
+import 'package:ditonton/presentation/bloc/tvseries_detail/watchlist/watchlist_tvseries_state.dart';
 import 'package:ditonton/presentation/widgets/tvseries_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../../common/state_enum.dart';
-import '../../../common/utils.dart';
-import '../../provider/watchlist_tvseries_notifier.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
+  const WatchlistTvSeriesPage({Key? key}) : super(key: key);
+
   @override
   _WatchlistTvSeriesPageState createState() => _WatchlistTvSeriesPageState();
 }
@@ -15,9 +18,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-            .fetchWatchlistTvSeries());
+    context.read<WatchlistTvSeriesBloc>().add(WatchlistTvSeriesList());
   }
 
   @override
@@ -26,41 +27,44 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
     routeObserver.subscribe(this, ModalRoute.of(context)!);
   }
 
+  @override
   void didPopNext() {
-    Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-        .fetchWatchlistTvSeries();
+    super.didPopNext();
+    context.read<WatchlistTvSeriesBloc>().add(WatchlistTvSeriesList());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Watchlist TvSeries'),
+        title: Text('Watchlist Movies'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistTvSeriesNotifier>(
-          builder: (context, data, child) {
-            if (data.watchlistState == RequestState.Loading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (data.watchlistState == RequestState.Loaded) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final tvSeries = data.watchlistTvSeries[index];
-                  return TvCard(tvSeries);
-                },
-                itemCount: data.watchlistTvSeries.length,
-              );
-            } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message),
-              );
-            }
-          },
-        ),
+        padding: EdgeInsets.all(8.0),
+        child: BlocBuilder<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
+            builder: (context, state) {
+          if (state is WatchlistTvSeriesLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is WatchlistTvSeriesHasList) {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                final tv = state.tvSeries[index];
+                return TvCard(tv);
+              },
+              itemCount: state.tvSeries.length,
+            );
+          } else if (state is WatchlistTvSeriesError) {
+            return Center(
+              child: Text(state.message),
+            );
+          } else {
+            return Center(
+              child: Text(''),
+            );
+          }
+        }),
       ),
     );
   }

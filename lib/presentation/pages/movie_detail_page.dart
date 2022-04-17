@@ -30,7 +30,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      context.read<MovieDetilBloc>().add(MovieDetailGetId(widget.id));
+      context.read<MovieDetailBloc>().add(MovieDetailGetId(widget.id));
       context.read<MovieRecommendedBloc>().add(GetRecomendedId(widget.id));
       context.read<WatchlistMovieBloc>().add(WatchlistStatus(widget.id));
     });
@@ -46,7 +46,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     });
 
     return Scaffold(
-      body: BlocBuilder<MovieDetilBloc, MovieDetailState>(
+      body: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {
         if (state is MovieDetailLoading) {
           return Center(
@@ -68,6 +68,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 }
 
+// ignore: must_be_immutable
 class DetailContent extends StatefulWidget {
   final MovieDetail movie;
   bool isAddedWatchlist;

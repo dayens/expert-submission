@@ -27,8 +27,9 @@ import 'package:ditonton/presentation/bloc/movie_detail/watchlist/watchlist_movi
 import 'package:ditonton/presentation/bloc/movies/movies_bloc.dart';
 import 'package:ditonton/presentation/bloc/search/search_bloc.dart';
 import 'package:ditonton/presentation/bloc/tvseries/tvseries_bloc.dart';
-import 'package:ditonton/presentation/provider/tvseries_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_tvseries_notifier.dart';
+import 'package:ditonton/presentation/bloc/tvseries_detail/recommennded/tvseries_recommended_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries_detail/tvseries_detail_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries_detail/watchlist/watchlist_tvseries_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -63,6 +64,10 @@ void init() {
       locator(),
     ),
   );
+  locator.registerFactory(() => TvSeriesDetailBloc(locator()));
+  locator.registerFactory(() => TvSeriesRecommendedBloc(locator()));
+  locator.registerFactory(
+      () => WatchlistTvSeriesBloc(locator(), locator(), locator(), locator()));
 
   //BlocMovie
   locator.registerFactory(
@@ -73,24 +78,10 @@ void init() {
   locator.registerFactory(() => NowPlayingMoviesBloc(locator()));
   locator.registerFactory(() => PopularMoviesBloc(locator()));
   locator.registerFactory(() => TopRatedMoviesBloc(locator()));
-  locator.registerFactory(() => MovieDetilBloc(locator()));
+  locator.registerFactory(() => MovieDetailBloc(locator()));
   locator.registerFactory(() => MovieRecommendedBloc(locator()));
   locator.registerFactory(
       () => WatchlistMovieBloc(locator(), locator(), locator(), locator()));
-
-  //profider Tv Series
-  locator.registerFactory(
-    () => TvSeriesDetailNotifier(
-      getTvSeriesDetail: locator(),
-      getRecommendedTvSeries: locator(),
-      removeWatchlistTv: locator(),
-      getWatchListStatusTvSeries: locator(),
-      saveWatchlistTv: locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => WatchlistTvSeriesNotifier(getWatchlistTvSeries: locator()),
-  );
 
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));

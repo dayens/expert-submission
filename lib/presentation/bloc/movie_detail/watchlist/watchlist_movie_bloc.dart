@@ -34,7 +34,7 @@ class WatchlistMovieBloc
       result.fold((failure) {
         emit(WatchlistMovieError(failure.message));
       }, (message) {
-        emit(WatchlistMovieAddMessage(message));
+        emit(WatchlistMovieMessage(message));
       });
     });
 
@@ -46,7 +46,7 @@ class WatchlistMovieBloc
       result.fold((failure) {
         emit(WatchlistMovieError(failure.message));
       }, (message) {
-        emit(WatchlistMovieRemoveMessage(message));
+        emit(WatchlistMovieMessage(message));
       });
     });
 
