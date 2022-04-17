@@ -73,7 +73,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //   }
 // }
 
-
 class WatchlistMoviesPage extends StatefulWidget {
   const WatchlistMoviesPage({Key? key}) : super(key: key);
 
@@ -81,8 +80,8 @@ class WatchlistMoviesPage extends StatefulWidget {
   _WatchlistMoviesPageState createState() => _WatchlistMoviesPageState();
 }
 
-class _WatchlistMoviesPageState extends State<WatchlistMoviesPage> with RouteAware {
-
+class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
+    with RouteAware {
   @override
   void initState() {
     super.initState();
@@ -110,30 +109,29 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage> with RouteAwa
       body: Padding(
         padding: EdgeInsets.all(8.0),
         child: BlocBuilder<WatchlistMovieBloc, WatchlistMovieState>(
-          builder: (context, state) {
-            if (state is WatchlistMovieLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is WatchlistMovieHasList) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final movie = state.movie[index];
-                  return MovieCard(movie);
-                },
-                itemCount: state.movie.length,
-              );
-            } else if (state is WatchlistMovieError) {
-              return Center(
-                child: Text(state.message),
-              );
-            } else {
-              return Center(
-                child: Text(''),
-              );
-            }
+            builder: (context, state) {
+          if (state is WatchlistMovieLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is WatchlistMovieHasList) {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                final movie = state.movie[index];
+                return MovieCard(movie);
+              },
+              itemCount: state.movie.length,
+            );
+          } else if (state is WatchlistMovieError) {
+            return Center(
+              child: Text(state.message),
+            );
+          } else {
+            return Center(
+              child: Text(''),
+            );
           }
-        ),
+        }),
       ),
     );
   }
@@ -144,4 +142,3 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage> with RouteAwa
     super.dispose();
   }
 }
-

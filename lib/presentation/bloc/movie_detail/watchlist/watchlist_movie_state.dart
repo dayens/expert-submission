@@ -30,10 +30,19 @@ class WatchlistMovieHasStatus extends WatchlistMovieState {
   List<Object?> get props => [status];
 }
 
-class WatchlistMovieMessage extends WatchlistMovieState {
+class WatchlistMovieAddMessage extends WatchlistMovieState {
   final String message;
 
-  WatchlistMovieMessage(this.message);
+  WatchlistMovieAddMessage(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+class WatchlistMovieRemoveMessage extends WatchlistMovieState {
+  final String message;
+
+  WatchlistMovieRemoveMessage(this.message);
 
   @override
   List<Object> get props => [message];

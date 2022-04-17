@@ -13,8 +13,8 @@ class WatchlistMovieBloc
   final RemoveWatchlist _removeWatchlist;
   final GetWatchlistMovies _getWatchlistMovies;
 
-  WatchlistMovieBloc(
-      this._getWatchListStatus, this._saveWatchlist, this._removeWatchlist, this._getWatchlistMovies)
+  WatchlistMovieBloc(this._getWatchListStatus, this._saveWatchlist,
+      this._removeWatchlist, this._getWatchlistMovies)
       : super(WatchlistMovieEmpty()) {
     on<WatchlistStatus>((event, emit) async {
       final id = event.id;
@@ -34,7 +34,7 @@ class WatchlistMovieBloc
       result.fold((failure) {
         emit(WatchlistMovieError(failure.message));
       }, (message) {
-        emit(WatchlistMovieMessage(message));
+        emit(WatchlistMovieAddMessage(message));
       });
     });
 
@@ -46,7 +46,7 @@ class WatchlistMovieBloc
       result.fold((failure) {
         emit(WatchlistMovieError(failure.message));
       }, (message) {
-        emit(WatchlistMovieMessage(message));
+        emit(WatchlistMovieRemoveMessage(message));
       });
     });
 

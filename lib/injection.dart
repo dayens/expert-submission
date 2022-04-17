@@ -78,7 +78,6 @@ void init() {
   locator.registerFactory(
       () => WatchlistMovieBloc(locator(), locator(), locator(), locator()));
 
-
   //profider Tv Series
   locator.registerFactory(
     () => TvSeriesDetailNotifier(

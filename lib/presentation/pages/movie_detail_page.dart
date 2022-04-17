@@ -135,23 +135,38 @@ class _DetailContentState extends State<DetailContent> {
                                       .read<WatchlistMovieBloc>()
                                       .add(WatchlistMovieRemove(widget.movie));
                                 }
+
+                                final message = context.select<
+                                    WatchlistMovieBloc,
+                                    String>((value) => (value.state
+                                        is WatchlistMovieHasStatus)
+                                    ? (value.state as WatchlistMovieHasStatus)
+                                                .status ==
+                                            false
+                                        ? watchlistAddSuccessMessage
+                                        : watchlistRemoveSuccessMessage
+                                    : !widget.isAddedWatchlist
+                                        ? watchlistAddSuccessMessage
+                                        : watchlistRemoveSuccessMessage);
+
+                                if (message == watchlistAddSuccessMessage ||
+                                    message == watchlistRemoveSuccessMessage) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text(message)));
+                                } else {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          content: Text(message),
+                                        );
+                                      });
+                                }
+
                                 setState(() {
                                   widget.isAddedWatchlist =
                                       !widget.isAddedWatchlist;
                                 });
-
-                                final message = context
-                                    .select<WatchlistMovieBloc, String>(
-                                        (value) {
-                                  if (value.state is WatchlistMovieMessage) {
-                                    return watchlistRemoveSuccessMessage;
-                                  } else {
-                                    return watchlistAddSuccessMessage;
-                                  }
-                                });
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text(message)));
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
