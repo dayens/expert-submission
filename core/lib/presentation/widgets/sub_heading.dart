@@ -1,7 +1,6 @@
 import 'package:core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
-
 class SubHeading extends StatelessWidget {
   final String title;
   final Function() onTap;

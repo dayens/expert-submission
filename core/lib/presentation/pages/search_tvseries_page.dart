@@ -1,4 +1,3 @@
-
 import 'package:core/presentation/bloc/search/search_bloc.dart';
 import 'package:core/presentation/bloc/search/search_event.dart';
 import 'package:core/presentation/bloc/search/search_state.dart';

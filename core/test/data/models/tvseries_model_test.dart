@@ -1,7 +1,6 @@
-
-import 'package:ditonton/data/models/tvseries_model.dart';
-import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tvseries/data/models/tvseries_model.dart';
+import 'package:tvseries/domain/entities/tvseries.dart';
 
 void main() {
   final tTvSeriesModel = TvSeriesModel(

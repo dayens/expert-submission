@@ -26,6 +26,10 @@ dependencies:
 
   about:
     path: ../about
+  movie:
+    path: ../movie
+  tvseries:
+    path: ../tvseries
 
 dev_dependencies:
   flutter_test:

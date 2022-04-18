@@ -1,4 +1,3 @@
-
 import 'package:core/presentation/bloc/search/search_state.dart';
 import 'package:core/presentation/widgets/movie_card_list.dart';
 import 'package:core/styles/text_styles.dart';
@@ -15,7 +14,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search'),
+        title: const Text('Search'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -26,14 +25,14 @@ class SearchPage extends StatelessWidget {
               onChanged: (query) {
                 context.read<SearchBlocMovie>().add(OnQueryChanged(query));
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search title',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
               ),
               textInputAction: TextInputAction.search,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               'Search Result',
               style: kHeading6,

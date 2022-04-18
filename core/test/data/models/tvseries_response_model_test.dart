@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:ditonton/data/models/tvseries_model.dart';
-import 'package:ditonton/data/models/tvseries_response.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tvseries/data/models/tvseries_model.dart';
+import 'package:tvseries/data/models/tvseries_response.dart';
 import '../../json_reader.dart';
 
 void main() {
@@ -21,12 +21,12 @@ void main() {
     originCountry: [],
   );
   final tTvSeriesResponseModel =
-  TvSeriesResponse(tvSeriesList: <TvSeriesModel>[tTvSeriesModel]);
+      TvSeriesResponse(tvSeriesList: <TvSeriesModel>[tTvSeriesModel]);
   group('fromJson', () {
     test('should return a valid model from JSON', () async {
       // arrange
       final Map<String, dynamic> jsonMap =
-      json.decode(readJson('dummy_data/airing_today_model.json'));
+          json.decode(readJson('dummy_data/airing_today_model.json'));
       // act
       final result = TvSeriesResponse.fromJson(jsonMap);
       // assert

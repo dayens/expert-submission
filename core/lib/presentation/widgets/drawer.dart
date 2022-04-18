@@ -1,7 +1,6 @@
 import 'package:about/about.dart';
 import 'package:flutter/material.dart';
 
-
 class DrawerWidgets extends StatelessWidget {
   final Function() onTapMovie;
   final Function() onTapTv;

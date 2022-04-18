@@ -1,6 +1,6 @@
-import 'package:core/domain/entities/tvseries.dart';
 import 'package:equatable/equatable.dart';
-import '../../../domain/entities/movie.dart';
+import 'package:movie/domain/entities/movie.dart';
+import 'package:tvseries/domain/entities/tvseries.dart';
 
 abstract class SearchState extends Equatable {
   const SearchState();

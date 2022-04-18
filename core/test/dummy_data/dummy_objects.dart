@@ -1,10 +1,10 @@
-import 'package:ditonton/data/models/movie_table.dart';
-import 'package:ditonton/data/models/tvseries_table.dart';
-import 'package:ditonton/domain/entities/genre.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/entities/movie_detail.dart';
-import 'package:ditonton/domain/entities/tvseries.dart';
-import 'package:ditonton/domain/entities/tvseries_detail.dart';
+import 'package:core/domain/entities/genre.dart';
+import 'package:movie/data/models/movie_table.dart';
+import 'package:movie/domain/entities/movie.dart';
+import 'package:movie/domain/entities/movie_detail.dart';
+import 'package:tvseries/data/models/tvseries_table.dart';
+import 'package:tvseries/domain/entities/tvseries.dart';
+import 'package:tvseries/domain/entities/tvseries_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -38,8 +38,7 @@ final testTvSeries = TvSeries(
     popularity: 1,
     posterPath: 'posterPath',
     voteAverage: 1,
-    voteCount: 1
-);
+    voteCount: 1);
 
 final testTvSeriesList = [testTvSeries];
 
@@ -68,8 +67,7 @@ final testTvSeriesDetail = TvSeriesDetail(
     popularity: 1,
     posterPath: 'posterPath',
     voteAverage: 1,
-    voteCount: 1
-);
+    voteCount: 1);
 
 final testWatchlistMovie = Movie.watchlist(
   id: 1,
