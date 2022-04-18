@@ -1,4 +1,3 @@
-
 import 'package:core/domain/entities/genre.dart';
 import 'package:movie/data/models/movie_table.dart';
 import 'package:movie/domain/entities/movie.dart';
