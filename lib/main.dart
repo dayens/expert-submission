@@ -1,3 +1,4 @@
+import 'package:about/about.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/injection.dart' as di;
@@ -10,7 +11,6 @@ import 'package:ditonton/presentation/bloc/tvseries/tvseries_bloc.dart';
 import 'package:ditonton/presentation/bloc/tvseries_detail/recommennded/tvseries_recommended_bloc.dart';
 import 'package:ditonton/presentation/bloc/tvseries_detail/tvseries_detail_bloc.dart';
 import 'package:ditonton/presentation/bloc/tvseries_detail/watchlist/watchlist_tvseries_bloc.dart';
-import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
