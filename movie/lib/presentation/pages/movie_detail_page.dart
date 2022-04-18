@@ -239,20 +239,20 @@ class _DetailContentState extends State<DetailContent> {
                                             );
                                           },
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.all(
+                                            borderRadius: const BorderRadius.all(
                                               Radius.circular(8),
                                             ),
                                             child: CachedNetworkImage(
                                               imageUrl:
                                                   'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                                               placeholder: (context, url) =>
-                                                  Center(
+                                                  const Center(
                                                 child:
                                                     CircularProgressIndicator(),
                                               ),
                                               errorWidget:
                                                   (context, url, error) =>
-                                                      Icon(Icons.error),
+                                                      const Icon(Icons.error),
                                             ),
                                           ),
                                         ),
@@ -266,7 +266,7 @@ class _DetailContentState extends State<DetailContent> {
                                   child: Text(state.message),
                                 );
                               } else {
-                                return Center(
+                                return const Center(
                                   child: Text('Failed'),
                                 );
                               }
@@ -298,7 +298,7 @@ class _DetailContentState extends State<DetailContent> {
             backgroundColor: kRichBlack,
             foregroundColor: Colors.white,
             child: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
               },

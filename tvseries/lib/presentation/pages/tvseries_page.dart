@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
-import 'package:core/presentation/pages/search_tvseries_page.dart';
-
 import 'package:core/presentation/widgets/sub_heading.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/constants.dart';
@@ -9,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/pages/home_movie_page.dart';
 import 'package:movie/presentation/pages/watchlist/watchlist_page.dart';
+import 'package:search/presentation/pages/search_tvseries_page.dart';
 import 'package:tvseries/presentation/pages/popular_tvseries_page.dart';
 import 'package:tvseries/presentation/pages/top_rated_tvseries_page.dart';
 import 'package:tvseries/presentation/pages/tvseries_detail_page.dart';
@@ -51,13 +50,13 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
         },
       ),
       appBar: AppBar(
-        title: Text('TV Series'),
+        title: const Text('TV Series'),
         actions: [
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, SearchTvSeriesPage.ROUTE_NAME);
             },
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           )
         ],
       ),
@@ -74,7 +73,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               BlocBuilder<AiringTodayTvSeriesBloc, AiringTodayTvSeriesState>(
                   builder: (context, state) {
                 if (state is AiringTodayTvSeriesLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is AiringTodayTvSeriesHasData) {
@@ -85,19 +84,19 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                     child: Text(state.message),
                   );
                 } else {
-                  return Text('Failed');
+                  return const Text('Failed');
                 }
               }),
               SubHeading(
                   title: 'Popular',
                   onTap: () {
                     Navigator.pushNamed(
-                        context, PopularTvSeriesPage.ROUTE_NAME);
+                        context, PopularTvSeriesPage.routeName);
                   }),
               BlocBuilder<PopularTvSeriesBloc, PopularTvSeriesState>(
                   builder: (context, state) {
                 if (state is PopularTvSeriesLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is PopularTvSeriesHasData) {
@@ -108,19 +107,19 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                     child: Text(state.message),
                   );
                 } else {
-                  return Text('Failed');
+                  return const Text('Failed');
                 }
               }),
               SubHeading(
                   title: 'Top Rated',
                   onTap: () {
                     Navigator.pushNamed(
-                        context, TopRatedTvSeriesPage.ROUTE_NAME);
+                        context, TopRatedTvSeriesPage.routeName);
                   }),
               BlocBuilder<TopRatedTvSeriesBloc, TopRatedTvSeriesState>(
                   builder: (context, state) {
                 if (state is TopRatedTvSeriesLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is TopRatedTvSeriesHasData) {
@@ -131,7 +130,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                     child: Text(state.message),
                   );
                 } else {
-                  return Text('Failed');
+                  return const Text('Failed');
                 }
               }),
             ],
@@ -166,13 +165,13 @@ class TvSeriesList extends StatelessWidget {
                 );
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${tv.posterPath}',
-                  placeholder: (context, url) => Center(
+                  imageUrl: '$baseImageUrl${tv.posterPath}',
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),

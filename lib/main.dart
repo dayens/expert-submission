@@ -1,11 +1,5 @@
 import 'package:about/about.dart';
 import 'package:core/common/utils.dart';
-
-import 'package:core/presentation/bloc/search/search_bloc.dart';
-
-import 'package:core/presentation/pages/search_page.dart';
-import 'package:core/presentation/pages/search_tvseries_page.dart';
-
 import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:ditonton/injection.dart' as di;
@@ -23,6 +17,9 @@ import 'package:movie/presentation/pages/popular_movies_page.dart';
 import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:movie/presentation/pages/watchlist/watchlist_page.dart';
 import 'package:provider/provider.dart';
+import 'package:search/presentation/bloc/search/search_bloc.dart';
+import 'package:search/presentation/pages/search_page.dart';
+import 'package:search/presentation/pages/search_tvseries_page.dart';
 import 'package:tvseries/presentation/bloc/tvseries/tvseries_bloc.dart';
 import 'package:tvseries/presentation/bloc/tvseries_detail/recommennded/tvseries_recommended_bloc.dart';
 import 'package:tvseries/presentation/bloc/tvseries_detail/tvseries_detail_bloc.dart';
@@ -105,9 +102,9 @@ class MyApp extends StatelessWidget {
             //TvSeries
             case TvSeriesPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => TvSeriesPage());
-            case PopularTvSeriesPage.ROUTE_NAME:
+            case PopularTvSeriesPage.routeName:
               return CupertinoPageRoute(builder: (_) => PopularTvSeriesPage());
-            case TopRatedTvSeriesPage.ROUTE_NAME:
+            case TopRatedTvSeriesPage.routeName:
               return CupertinoPageRoute(builder: (_) => TopRatedTvSeriesPage());
             case TvSeriesDetailPage.ROUTE_NAME:
               final id = settings.arguments as int;
@@ -117,8 +114,7 @@ class MyApp extends StatelessWidget {
               );
             case SearchTvSeriesPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => SearchTvSeriesPage());
-
-            case AboutPage.ROUTE_NAME:
+            case AboutPage.routeName:
               return MaterialPageRoute(builder: (_) => AboutPage());
             default:
               return MaterialPageRoute(builder: (_) {

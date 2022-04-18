@@ -1,4 +1,4 @@
-name: tvseries
+name: search
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -10,25 +10,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  equatable: ^2.0.2
-  http: ^0.13.3
-  dartz: ^0.10.0-nullsafety.2
-  flutter_rating_bar: ^4.0.0
-  cached_network_image: ^3.0.0
-  sqflite: ^2.0.0+3
-  path_provider: ^2.0.2
   flutter_bloc: ^8.0.1
   rxdart: ^0.27.3
-  firebase_core: ^1.14.1
-  firebase_crashlytics: ^2.6.2
+
+  movie:
+    path: ../movie
+
+  tvseries:
+    path: ../tvseries
 
   core:
     path: ../core
-  movie:
-    path: ../movie
-  search:
-    path: ../search
-  
 
 dev_dependencies:
   flutter_test:

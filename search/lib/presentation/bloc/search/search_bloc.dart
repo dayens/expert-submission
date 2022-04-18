@@ -1,9 +1,10 @@
-import 'package:core/domain/usecases/search_tvseries.dart';
-import 'package:core/presentation/bloc/search/debounce.dart';
-import 'package:core/presentation/bloc/search/search_event.dart';
-import 'package:core/presentation/bloc/search/search_state.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:search/presentation/bloc/search/search_state.dart';
 import '../../../domain/usecases/search_movies.dart';
+import '../../../domain/usecases/search_tvseries.dart';
+import 'debounce.dart';
+import 'search_event.dart';
 
 class SearchBlocMovie extends Bloc<SearchEvent, SearchState> {
   final SearchMovies _searchMovies;

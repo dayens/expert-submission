@@ -16,7 +16,7 @@ class DrawerWidgets extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          UserAccountsDrawerHeader(
+          const UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
               backgroundImage: AssetImage('assets/circle-g.png'),
             ),
@@ -24,26 +24,26 @@ class DrawerWidgets extends StatelessWidget {
             accountEmail: Text('ditonton@dicoding.com'),
           ),
           ListTile(
-            leading: Icon(Icons.movie),
-            title: Text('Movies'),
+            leading: const Icon(Icons.movie),
+            title: const Text('Movies'),
             onTap: onTapMovie,
           ),
           ListTile(
-            leading: Icon(Icons.tv),
-            title: Text('TV Series'),
+            leading: const Icon(Icons.tv),
+            title: const Text('TV Series'),
             onTap: onTapTv,
           ),
           ListTile(
-            leading: Icon(Icons.save_alt),
-            title: Text('Watchlist'),
+            leading: const Icon(Icons.save_alt),
+            title: const Text('Watchlist'),
             onTap: onTapWatchlist,
           ),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
+              Navigator.pushNamed(context, AboutPage.routeName);
             },
-            leading: Icon(Icons.info_outline),
-            title: Text('About'),
+            leading: const Icon(Icons.info_outline),
+            title: const Text('About'),
           ),
         ],
       ),

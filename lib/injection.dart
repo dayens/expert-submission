@@ -1,8 +1,3 @@
-import 'package:core/domain/usecases/search_movies.dart';
-import 'package:core/domain/usecases/search_tvseries.dart';
-
-import 'package:core/presentation/bloc/search/search_bloc.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:movie/data/datasources/db/database_helper_movie.dart';
@@ -23,6 +18,9 @@ import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail/recommennded/movie_recommended_bloc.dart';
 import 'package:movie/presentation/bloc/movies/movies_bloc.dart';
 import 'package:movie/presentation/bloc/watchlist_movies/watchlist_movie_bloc.dart';
+import 'package:search/domain/usecases/search_movies.dart';
+import 'package:search/domain/usecases/search_tvseries.dart';
+import 'package:search/presentation/bloc/search/search_bloc.dart';
 import 'package:tvseries/data/datasources/db/database_helper_tvseries.dart';
 import 'package:tvseries/data/datasources/tvseries_local_data_source.dart';
 import 'package:tvseries/data/datasources/tvseries_remote_data_source.dart';

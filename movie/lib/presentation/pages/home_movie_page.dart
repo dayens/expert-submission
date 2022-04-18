@@ -3,15 +3,14 @@ import 'package:core/presentation/widgets/sub_heading.dart';
 import 'package:movie/presentation/pages/popular_movies_page.dart';
 import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:movie/presentation/pages/watchlist/watchlist_page.dart';
+import 'package:search/presentation/pages/search_page.dart';
 import 'package:tvseries/presentation/pages/tvseries_page.dart';
 import '../../domain/entities/movie.dart';
-import 'package:core/presentation/pages/search_page.dart';
 import 'package:core/presentation/widgets/drawer.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../bloc/movies/movies_bloc.dart';
 import '../bloc/movies/movies_event.dart';
 import '../bloc/movies/movies_state.dart';
@@ -50,7 +49,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
         },
       ),
       appBar: AppBar(
-        title: Text('Movies'),
+        title: const Text('Movies'),
         actions: [
           IconButton(
             onPressed: () {
@@ -73,7 +72,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               BlocBuilder<NowPlayingMoviesBloc, NowPlayingMoviesState>(
                   builder: (context, state) {
                 if (state is NowPlayingMoviesLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is NowPlayingMoviesHasData) {
@@ -84,7 +83,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                     child: Text(state.message),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: Text('Failed'),
                   );
                 }
@@ -97,7 +96,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
                   builder: (context, state) {
                 if (state is PopularMoviesLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is PopularMoviesHasData) {
@@ -108,7 +107,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                     child: Text(state.message),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: Text('Failed'),
                   );
                 }
@@ -121,7 +120,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               BlocBuilder<TopRatedMoviesBloc, TopRatedMoviesState>(
                   builder: (context, state) {
                 if (state is TopRatedMoviesLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is TopRatedMoviesHasData) {
@@ -132,7 +131,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                     child: Text(state.message),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: Text('Failed'),
                   );
                 }
@@ -169,13 +168,13 @@ class MovieList extends StatelessWidget {
                 );
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
-                  placeholder: (context, url) => Center(
+                  imageUrl: '$baseImageUrl${movie.posterPath}',
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),

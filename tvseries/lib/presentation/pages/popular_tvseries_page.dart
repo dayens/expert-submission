@@ -7,7 +7,7 @@ import '../bloc/tvseries/tvseries_event.dart';
 import '../bloc/tvseries/tvseries_state.dart';
 
 class PopularTvSeriesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/popular-tvseries';
+  static const routeName = '/popular-tvseries';
 
   @override
   _PopularTvSeriesPageState createState() => _PopularTvSeriesPageState();
@@ -26,14 +26,14 @@ class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Popular TvSeries'),
+        title: const Text('Popular TvSeries'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<PopularTvSeriesBloc, PopularTvSeriesState>(
             builder: (context, state) {
           if (state is PopularTvSeriesLoading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (state is PopularTvSeriesHasData) {
@@ -49,7 +49,7 @@ class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {
               child: Text(state.message),
             );
           } else {
-            return Center(
+            return const Center(
               child: Text('Failed'),
             );
           }

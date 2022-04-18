@@ -38,14 +38,14 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Watchlist Movies'),
+        title: const Text('Watchlist Movies'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
             builder: (context, state) {
           if (state is WatchlistTvSeriesLoading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (state is WatchlistTvSeriesHasList) {
@@ -61,7 +61,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
               child: Text(state.message),
             );
           } else {
-            return Center(
+            return const Center(
               child: Text(''),
             );
           }

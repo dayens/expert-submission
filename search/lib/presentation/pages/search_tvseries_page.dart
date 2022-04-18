@@ -1,10 +1,12 @@
-import 'package:core/presentation/bloc/search/search_bloc.dart';
-import 'package:core/presentation/bloc/search/search_event.dart';
-import 'package:core/presentation/bloc/search/search_state.dart';
+
+import 'package:core/presentation/widgets/tvseries_card.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../widgets/tvseries_card.dart';
+
+import '../bloc/search/search_bloc.dart';
+import '../bloc/search/search_event.dart';
+import '../bloc/search/search_state.dart';
 
 class SearchTvSeriesPage extends StatelessWidget {
   static const ROUTE_NAME = '/search-tvseries';
@@ -13,13 +15,13 @@ class SearchTvSeriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search'),
+        title: const Text('Search'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Search title',
               prefixIcon: Icon(Icons.search),
               border: OutlineInputBorder(),
@@ -30,7 +32,7 @@ class SearchTvSeriesPage extends StatelessWidget {
               }
             },
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             'Search Result',
             style: kHeading6,
@@ -38,7 +40,7 @@ class SearchTvSeriesPage extends StatelessWidget {
           BlocBuilder<SearchBlocTvSeries, SearchState>(
               builder: (context, state) {
             if (state is SearchLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is SearchHasDataTvSeries) {

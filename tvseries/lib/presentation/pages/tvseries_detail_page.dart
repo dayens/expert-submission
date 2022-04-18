@@ -53,7 +53,7 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
       body: BlocBuilder<TvSeriesDetailBloc, TvSeriesDetailState>(
           builder: (context, state) {
         if (state is TvSeriesDetailLoading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is TvSeriesDetailHasData) {
@@ -63,7 +63,7 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
             child: Text(state.message),
           );
         } else {
-          return Center(
+          return const Center(
             child: Text('Failed'),
           );
         }
@@ -97,17 +97,17 @@ class _DetailContentState extends State<DetailContent> {
           imageUrl:
               'https://image.tmdb.org/t/p/w500${widget.tvSeries.posterPath}',
           width: screenWidth,
-          placeholder: (context, url) => Center(
+          placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
           ),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),
           child: DraggableScrollableSheet(
             builder: (context, scrollController) {
               return Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kRichBlack,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                 ),
@@ -175,9 +175,9 @@ class _DetailContentState extends State<DetailContent> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   widget.isAddedWatchlist
-                                      ? Icon(Icons.check)
-                                      : Icon(Icons.add),
-                                  Text('Watchlist'),
+                                      ? const Icon(Icons.check)
+                                      : const Icon(Icons.add),
+                                  const Text('Watchlist'),
                                 ],
                               ),
                             ),
@@ -192,7 +192,7 @@ class _DetailContentState extends State<DetailContent> {
                                 RatingBarIndicator(
                                   rating: widget.tvSeries.voteAverage / 2,
                                   itemCount: 5,
-                                  itemBuilder: (context, index) => Icon(
+                                  itemBuilder: (context, index) => const Icon(
                                     Icons.star,
                                     color: kMikadoYellow,
                                   ),
@@ -201,13 +201,13 @@ class _DetailContentState extends State<DetailContent> {
                                 Text('${widget.tvSeries.voteAverage}')
                               ],
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               'Overview',
                               style: kHeading6,
                             ),
                             Text(widget.tvSeries.overview),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               'Recommendations',
                               style: kHeading6,
@@ -216,7 +216,7 @@ class _DetailContentState extends State<DetailContent> {
                                     TvSeriesRecommendedState>(
                                 builder: (context, state) {
                               if (state is TvSeriesRecommendedLoading) {
-                                return Center(
+                                return const Center(
                                   child: CircularProgressIndicator(),
                                 );
                               } else if (state is TvSeriesRecommendedHasData) {
@@ -237,20 +237,20 @@ class _DetailContentState extends State<DetailContent> {
                                             );
                                           },
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.all(
+                                            borderRadius: const BorderRadius.all(
                                               Radius.circular(8),
                                             ),
                                             child: CachedNetworkImage(
                                               imageUrl:
                                                   'https://image.tmdb.org/t/p/w500${tv.posterPath}',
                                               placeholder: (context, url) =>
-                                                  Center(
+                                                  const Center(
                                                 child:
                                                     CircularProgressIndicator(),
                                               ),
                                               errorWidget:
                                                   (context, url, error) =>
-                                                      Icon(Icons.error),
+                                                      const Icon(Icons.error),
                                             ),
                                           ),
                                         ),
@@ -264,7 +264,7 @@ class _DetailContentState extends State<DetailContent> {
                                   child: Text(state.message),
                                 );
                               } else {
-                                return Center(
+                                return const Center(
                                   child: Text('Failed'),
                                 );
                               }
@@ -296,7 +296,7 @@ class _DetailContentState extends State<DetailContent> {
             backgroundColor: kRichBlack,
             foregroundColor: Colors.white,
             child: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
               },
