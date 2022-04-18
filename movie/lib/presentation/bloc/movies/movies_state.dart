@@ -17,7 +17,7 @@ class NowPlayingMoviesLoading extends NowPlayingMoviesState {}
 class NowPlayingMoviesError extends NowPlayingMoviesState {
   final String message;
 
-  NowPlayingMoviesError(this.message);
+  const NowPlayingMoviesError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -26,7 +26,7 @@ class NowPlayingMoviesError extends NowPlayingMoviesState {
 class NowPlayingMoviesHasData extends NowPlayingMoviesState {
   final List<Movie> result;
 
-  NowPlayingMoviesHasData(this.result);
+  const NowPlayingMoviesHasData(this.result);
 
   @override
   List<Object> get props => [result];
@@ -47,7 +47,7 @@ class PopularMoviesLoading extends PopularMoviesState {}
 class PopularMoviesError extends PopularMoviesState {
   final String message;
 
-  PopularMoviesError(this.message);
+  const PopularMoviesError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -56,7 +56,7 @@ class PopularMoviesError extends PopularMoviesState {
 class PopularMoviesHasData extends PopularMoviesState {
   final List<Movie> result;
 
-  PopularMoviesHasData(this.result);
+  const PopularMoviesHasData(this.result);
 
   @override
   List<Object> get props => [result];
@@ -77,7 +77,7 @@ class TopRatedMoviesLoading extends TopRatedMoviesState {}
 class TopRatedMoviesError extends TopRatedMoviesState {
   final String message;
 
-  TopRatedMoviesError(this.message);
+  const TopRatedMoviesError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -86,7 +86,7 @@ class TopRatedMoviesError extends TopRatedMoviesState {
 class TopRatedMoviesHasData extends TopRatedMoviesState {
   final List<Movie> result;
 
-  TopRatedMoviesHasData(this.result);
+  const TopRatedMoviesHasData(this.result);
 
   @override
   List<Object> get props => [result];

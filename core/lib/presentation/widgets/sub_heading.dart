@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +7,7 @@ class SubHeading extends StatelessWidget {
   final String title;
   final Function() onTap;
 
-  SubHeading({required this.title, required this.onTap});
+  const SubHeading({required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,11 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movie/data/models/movie_model.dart';
 import 'package:movie/domain/entities/movie.dart';
 
 void main() {
-  final tMovieModel = MovieModel(
+  const tMovieModel = MovieModel(
     adult: false,
     backdropPath: 'backdropPath',
     genreIds: [1, 2, 3],

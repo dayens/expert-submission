@@ -16,7 +16,7 @@ class TvSeriesRecommendedLoading extends TvSeriesRecommendedState {}
 class TvSeriesRecommendedError extends TvSeriesRecommendedState {
   final String message;
 
-  TvSeriesRecommendedError(this.message);
+  const TvSeriesRecommendedError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -25,7 +25,7 @@ class TvSeriesRecommendedError extends TvSeriesRecommendedState {
 class TvSeriesRecommendedHasData extends TvSeriesRecommendedState {
   final List<TvSeries> tvSeries;
 
-  TvSeriesRecommendedHasData(this.tvSeries);
+  const TvSeriesRecommendedHasData(this.tvSeries);
 
   @override
   List<Object> get props => [tvSeries];

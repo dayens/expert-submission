@@ -8,7 +8,7 @@ import 'package:tvseries/presentation/pages/tvseries_detail_page.dart';
 class TvCard extends StatelessWidget {
   final TvSeries tv;
 
-  TvCard(this.tv);
+  const TvCard(this.tv, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TvCard extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            TvSeriesDetailPage.ROUTE_NAME,
+            TvSeriesDetailPage.routeName,
             arguments: tv.id,
           );
         },

@@ -9,6 +9,8 @@ import '../bloc/tvseries/tvseries_state.dart';
 class PopularTvSeriesPage extends StatefulWidget {
   static const routeName = '/popular-tvseries';
 
+  const PopularTvSeriesPage({Key? key}) : super(key: key);
+
   @override
   _PopularTvSeriesPageState createState() => _PopularTvSeriesPageState();
 }

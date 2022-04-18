@@ -1,4 +1,3 @@
-
 import 'package:core/presentation/widgets/tvseries_card.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,9 @@ import '../bloc/search/search_event.dart';
 import '../bloc/search/search_state.dart';
 
 class SearchTvSeriesPage extends StatelessWidget {
-  static const ROUTE_NAME = '/search-tvseries';
+  static const routeName = '/search-tvseries';
+
+  const SearchTvSeriesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

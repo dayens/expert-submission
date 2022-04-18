@@ -82,37 +82,37 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case '/home':
               return MaterialPageRoute(builder: (_) => HomeMoviePage());
-            case WatchlistPage.ROUTE_NAME:
+            case WatchlistPage.routeName:
               return CupertinoPageRoute(builder: (_) => WatchlistPage());
-            case HomeMoviePage.ROUTE_NAME:
+            case HomeMoviePage.routeName:
               return CupertinoPageRoute(builder: (_) => HomeMoviePage());
-            case PopularMoviesPage.ROUTE_NAME:
+            case PopularMoviesPage.routeName:
               return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
-            case TopRatedMoviesPage.ROUTE_NAME:
+            case TopRatedMoviesPage.routeName:
               return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
-            case MovieDetailPage.ROUTE_NAME:
+            case MovieDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
-            case SearchPage.ROUTE_NAME:
+            case SearchPage.routeName:
               return CupertinoPageRoute(builder: (_) => SearchPage());
 
             //TvSeries
-            case TvSeriesPage.ROUTE_NAME:
+            case TvSeriesPage.routeName:
               return MaterialPageRoute(builder: (_) => TvSeriesPage());
             case PopularTvSeriesPage.routeName:
               return CupertinoPageRoute(builder: (_) => PopularTvSeriesPage());
             case TopRatedTvSeriesPage.routeName:
               return CupertinoPageRoute(builder: (_) => TopRatedTvSeriesPage());
-            case TvSeriesDetailPage.ROUTE_NAME:
+            case TvSeriesDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => TvSeriesDetailPage(id: id),
                 settings: settings,
               );
-            case SearchTvSeriesPage.ROUTE_NAME:
+            case SearchTvSeriesPage.routeName:
               return CupertinoPageRoute(builder: (_) => SearchTvSeriesPage());
             case AboutPage.routeName:
               return MaterialPageRoute(builder: (_) => AboutPage());

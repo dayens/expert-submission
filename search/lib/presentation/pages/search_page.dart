@@ -8,7 +8,9 @@ import '../bloc/search/search_event.dart';
 import '../bloc/search/search_state.dart';
 
 class SearchPage extends StatelessWidget {
-  static const ROUTE_NAME = '/search';
+  static const routeName = '/search';
+
+  const SearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

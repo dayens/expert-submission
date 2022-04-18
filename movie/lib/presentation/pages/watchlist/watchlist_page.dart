@@ -4,7 +4,7 @@ import 'watchlist_movies_page.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatefulWidget {
-  static const ROUTE_NAME = '/watchlist';
+  static const routeName = '/watchlist';
 
   const WatchlistPage({Key? key}) : super(key: key);
 
@@ -30,8 +30,8 @@ class _WatchlistPageState extends State<WatchlistPage> {
   }
 
   final List<Widget> _listWidget = [
-    WatchlistMoviesPage(),
-    WatchlistTvSeriesPage()
+    const WatchlistMoviesPage(),
+    const WatchlistTvSeriesPage()
   ];
 
   void _onBottomNavTapped(int index) {
@@ -41,7 +41,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
   }
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
-    BottomNavigationBarItem(icon: Icon(Icons.movie), label: _movieText),
-    BottomNavigationBarItem(icon: Icon(Icons.tv), label: _tvText)
+    const BottomNavigationBarItem(icon: Icon(Icons.movie), label: _movieText),
+    const BottomNavigationBarItem(icon: Icon(Icons.tv), label: _tvText)
   ];
 }

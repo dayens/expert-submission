@@ -39,10 +39,10 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Watchlist Movies'),
+        title: const Text('Watchlist Movies'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<WatchlistMovieBloc, WatchlistMovieState>(
             builder: (context, state) {
           if (state is WatchlistMovieLoading) {

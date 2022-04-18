@@ -16,7 +16,7 @@ class WatchlistTvSeriesLoading extends WatchlistTvSeriesState {}
 class WatchlistTvSeriesError extends WatchlistTvSeriesState {
   final String message;
 
-  WatchlistTvSeriesError(this.message);
+  const WatchlistTvSeriesError(this.message);
 
   @override
   List<Object?> get props => [message];
@@ -25,7 +25,7 @@ class WatchlistTvSeriesError extends WatchlistTvSeriesState {
 class WatchlistTvSeriesHasStatus extends WatchlistTvSeriesState {
   final bool status;
 
-  WatchlistTvSeriesHasStatus(this.status);
+  const WatchlistTvSeriesHasStatus(this.status);
 
   @override
   List<Object?> get props => [status];
@@ -34,7 +34,7 @@ class WatchlistTvSeriesHasStatus extends WatchlistTvSeriesState {
 class WatchlistTvSeriesMessage extends WatchlistTvSeriesState {
   final String message;
 
-  WatchlistTvSeriesMessage(this.message);
+  const WatchlistTvSeriesMessage(this.message);
 
   @override
   List<Object> get props => [message];
@@ -43,7 +43,7 @@ class WatchlistTvSeriesMessage extends WatchlistTvSeriesState {
 class WatchlistTvSeriesHasList extends WatchlistTvSeriesState {
   final List<TvSeries> tvSeries;
 
-  WatchlistTvSeriesHasList(this.tvSeries);
+  const WatchlistTvSeriesHasList(this.tvSeries);
 
   @override
   List<Object?> get props => [tvSeries];

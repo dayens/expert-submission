@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -13,12 +15,8 @@ import 'package:tvseries/presentation/bloc/tvseries/tvseries_event.dart';
 import 'package:tvseries/presentation/bloc/tvseries/tvseries_state.dart';
 import 'tvseries_bloc_test.mocks.dart';
 
-
-@GenerateMocks([
-  GetAiringTodayTvSeries,
-GetPopularTvSeries,
-GetTopRatedTvSeries
-])
+@GenerateMocks(
+    [GetAiringTodayTvSeries, GetPopularTvSeries, GetTopRatedTvSeries])
 void main() {
   late AiringTodayTvSeriesBloc airingTodayBloc;
   late MockGetAiringTodayTvSeries mockGetAiringTodayTvSeries;
@@ -65,11 +63,9 @@ void main() {
       popularity: 1,
       posterPath: 'posterPath',
       voteAverage: 1,
-      voteCount: 1
-  );
+      voteCount: 1);
 
   final tTvSeriesList = <TvSeries>[tTvSeriesModel];
-
 
   //Airing Today Test
   blocTest<AiringTodayTvSeriesBloc, AiringTodayTvSeriesState>(
@@ -93,13 +89,13 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockGetAiringTodayTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return airingTodayBloc;
     },
     act: (bloc) => bloc.add(AiringTodayTvSeries()),
     expect: () => [
       AiringTodayTvSeriesLoading(),
-      AiringTodayTvSeriesError('Server Failure'),
+      const AiringTodayTvSeriesError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockGetAiringTodayTvSeries.execute());
@@ -128,13 +124,13 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockGetPopularTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return popularTvSeriesBloc;
     },
     act: (bloc) => bloc.add(PopularTvSeries()),
     expect: () => [
       PopularTvSeriesLoading(),
-      PopularTvSeriesError('Server Failure'),
+      const PopularTvSeriesError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockGetPopularTvSeries.execute());
@@ -163,13 +159,13 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockGetTopRatedTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return topRatedTvSeriesBloc;
     },
     act: (bloc) => bloc.add(TopRatedTvSeries()),
     expect: () => [
       TopRatedTvSeriesLoading(),
-      TopRatedTvSeriesError('Server Failure'),
+      const TopRatedTvSeriesError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockGetTopRatedTvSeries.execute());

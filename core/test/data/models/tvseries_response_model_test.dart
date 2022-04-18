@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tvseries/data/models/tvseries_model.dart';
@@ -5,7 +7,7 @@ import 'package:tvseries/data/models/tvseries_response.dart';
 import '../../json_reader.dart';
 
 void main() {
-  final tTvSeriesModel = TvSeriesModel(
+  const tTvSeriesModel = TvSeriesModel(
     backdropPath: '',
     firstAirDate: '',
     genreIds: [1, 2],
@@ -20,7 +22,7 @@ void main() {
     originalLanguage: '',
     originCountry: [],
   );
-  final tTvSeriesResponseModel =
+  const tTvSeriesResponseModel =
       TvSeriesResponse(tvSeriesList: <TvSeriesModel>[tTvSeriesModel]);
   group('fromJson', () {
     test('should return a valid model from JSON', () async {

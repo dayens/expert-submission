@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/data/models/genre_model.dart';
 import 'package:core/styles/colors.dart';
@@ -19,10 +21,10 @@ import '../bloc/watchlist_tvseries/watchlist_tvseries_event.dart';
 import '../bloc/watchlist_tvseries/watchlist_tvseries_state.dart';
 
 class TvSeriesDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-tvseries';
+  static const routeName = '/detail-tvseries';
 
   final int id;
-  TvSeriesDetailPage({required this.id});
+  const TvSeriesDetailPage({required this.id});
 
   @override
   _TvSeriesDetailPageState createState() => _TvSeriesDetailPageState();
@@ -220,7 +222,7 @@ class _DetailContentState extends State<DetailContent> {
                                   child: CircularProgressIndicator(),
                                 );
                               } else if (state is TvSeriesRecommendedHasData) {
-                                return Container(
+                                return SizedBox(
                                   height: 150,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
@@ -232,12 +234,13 @@ class _DetailContentState extends State<DetailContent> {
                                           onTap: () {
                                             Navigator.pushReplacementNamed(
                                               context,
-                                              TvSeriesDetailPage.ROUTE_NAME,
+                                              TvSeriesDetailPage.routeName,
                                               arguments: tv.id,
                                             );
                                           },
                                           child: ClipRRect(
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               Radius.circular(8),
                                             ),
                                             child: CachedNetworkImage(

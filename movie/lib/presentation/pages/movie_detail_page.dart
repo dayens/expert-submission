@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/genre.dart';
 import 'package:core/styles/colors.dart';
@@ -18,10 +20,10 @@ import '../bloc/watchlist_movies/watchlist_movie_event.dart';
 import '../bloc/watchlist_movies/watchlist_movie_state.dart';
 
 class MovieDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-movie';
+  static const routeName = '/detail-movie';
 
   final int id;
-  MovieDetailPage({required this.id});
+  const MovieDetailPage({required this.id});
 
   @override
   _MovieDetailPageState createState() => _MovieDetailPageState();
@@ -51,7 +53,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       body: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {
         if (state is MovieDetailLoading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is MovieDetailHasData) {
@@ -61,7 +63,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
             child: Text(state.message),
           );
         } else {
-          return Center(
+          return const Center(
             child: Text('Failed'),
           );
         }
@@ -75,7 +77,8 @@ class DetailContent extends StatefulWidget {
   final MovieDetail movie;
   bool isAddedWatchlist;
 
-  DetailContent(this.movie, this.isAddedWatchlist);
+  DetailContent(this.movie, this.isAddedWatchlist, {Key? key})
+      : super(key: key);
 
   @override
   State<DetailContent> createState() => _DetailContentState();
@@ -94,17 +97,17 @@ class _DetailContentState extends State<DetailContent> {
         CachedNetworkImage(
           imageUrl: 'https://image.tmdb.org/t/p/w500${widget.movie.posterPath}',
           width: screenWidth,
-          placeholder: (context, url) => Center(
+          placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
           ),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),
           child: DraggableScrollableSheet(
             builder: (context, scrollController) {
               return Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kRichBlack,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                 ),
@@ -175,9 +178,9 @@ class _DetailContentState extends State<DetailContent> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   widget.isAddedWatchlist
-                                      ? Icon(Icons.check)
-                                      : Icon(Icons.add),
-                                  Text('Watchlist'),
+                                      ? const Icon(Icons.check)
+                                      : const Icon(Icons.add),
+                                  const Text('Watchlist'),
                                 ],
                               ),
                             ),
@@ -201,7 +204,7 @@ class _DetailContentState extends State<DetailContent> {
                                 Text('${widget.movie.voteAverage}')
                               ],
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               'Overview',
                               style: kHeading6,
@@ -209,7 +212,7 @@ class _DetailContentState extends State<DetailContent> {
                             Text(
                               widget.movie.overview,
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               'Recommendations',
                               style: kHeading6,
@@ -218,11 +221,11 @@ class _DetailContentState extends State<DetailContent> {
                                     MovieRecommendedState>(
                                 builder: (context, state) {
                               if (state is MovieRecommendedLoading) {
-                                return Center(
+                                return const Center(
                                   child: CircularProgressIndicator(),
                                 );
                               } else if (state is MovieRecommendedHasData) {
-                                return Container(
+                                return SizedBox(
                                   height: 150,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
@@ -234,12 +237,13 @@ class _DetailContentState extends State<DetailContent> {
                                           onTap: () {
                                             Navigator.pushReplacementNamed(
                                               context,
-                                              MovieDetailPage.ROUTE_NAME,
+                                              MovieDetailPage.routeName,
                                               arguments: movie.id,
                                             );
                                           },
                                           child: ClipRRect(
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               Radius.circular(8),
                                             ),
                                             child: CachedNetworkImage(

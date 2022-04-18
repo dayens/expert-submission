@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/presentation/bloc/search/search_state.dart';
 import '../../../domain/usecases/search_movies.dart';

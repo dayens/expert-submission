@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/constants.dart';
@@ -9,7 +11,7 @@ import 'package:movie/presentation/pages/movie_detail_page.dart';
 class MovieCard extends StatelessWidget {
   final Movie movie;
 
-  MovieCard(this.movie);
+  const MovieCard(this.movie);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class MovieCard extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            MovieDetailPage.ROUTE_NAME,
+            MovieDetailPage.routeName,
             arguments: movie.id,
           );
         },

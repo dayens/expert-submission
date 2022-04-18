@@ -1,8 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/widgets/sub_heading.dart';
-import 'package:core/styles/text_styles.dart';
-import 'package:core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/pages/home_movie_page.dart';
@@ -18,7 +18,7 @@ import '../bloc/tvseries/tvseries_state.dart';
 
 class TvSeriesPage extends StatefulWidget {
   const TvSeriesPage({Key? key}) : super(key: key);
-  static const ROUTE_NAME = '/tv-series-page';
+  static const routeName = '/tv-series-page';
 
   @override
   _TvSeriesPageState createState() => _TvSeriesPageState();
@@ -40,13 +40,13 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
     return Scaffold(
       drawer: DrawerWidgets(
         onTapMovie: () {
-          Navigator.pushReplacementNamed(context, HomeMoviePage.ROUTE_NAME);
+          Navigator.pushReplacementNamed(context, HomeMoviePage.routeName);
         },
         onTapTv: () {
           Navigator.pop(context);
         },
         onTapWatchlist: () {
-          Navigator.pushNamed(context, WatchlistPage.ROUTE_NAME);
+          Navigator.pushNamed(context, WatchlistPage.routeName);
         },
       ),
       appBar: AppBar(
@@ -54,7 +54,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchTvSeriesPage.ROUTE_NAME);
+              Navigator.pushNamed(context, SearchTvSeriesPage.routeName);
             },
             icon: const Icon(Icons.search),
           )
@@ -90,8 +90,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               SubHeading(
                   title: 'Popular',
                   onTap: () {
-                    Navigator.pushNamed(
-                        context, PopularTvSeriesPage.routeName);
+                    Navigator.pushNamed(context, PopularTvSeriesPage.routeName);
                   }),
               BlocBuilder<PopularTvSeriesBloc, PopularTvSeriesState>(
                   builder: (context, state) {
@@ -144,11 +143,11 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
 class TvSeriesList extends StatelessWidget {
   final List<TvSeries> tvSeries;
 
-  TvSeriesList(this.tvSeries);
+  const TvSeriesList(this.tvSeries);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -160,7 +159,7 @@ class TvSeriesList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  TvSeriesDetailPage.ROUTE_NAME,
+                  TvSeriesDetailPage.routeName,
                   arguments: tv.id,
                 );
               },

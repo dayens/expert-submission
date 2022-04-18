@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:core/presentation/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +9,7 @@ import '../bloc/movies/movies_event.dart';
 import '../bloc/movies/movies_state.dart';
 
 class TopRatedMoviesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/top-rated-movie';
+  static const routeName = '/top-rated-movie';
 
   @override
   _TopRatedMoviesPageState createState() => _TopRatedMoviesPageState();
@@ -29,7 +31,7 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
         title: const Text('Top Rated Movies'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<TopRatedMoviesBloc, TopRatedMoviesState>(
             builder: (context, state) {
           if (state is TopRatedMoviesLoading) {

@@ -13,11 +13,7 @@ import 'package:movie/presentation/bloc/movies/movies_event.dart';
 import 'package:movie/presentation/bloc/movies/movies_state.dart';
 import 'movies_bloc_test.mocks.dart';
 
-@GenerateMocks([
-  GetNowPlayingMovies,
-  GetPopularMovies,
-  GetTopRatedMovies
-])
+@GenerateMocks([GetNowPlayingMovies, GetPopularMovies, GetTopRatedMovies])
 void main() {
   late NowPlayingMoviesBloc nowPlayingMoviesBloc;
   late MockGetNowPlayingMovies mockGetNowPlayingMovies;
@@ -54,7 +50,7 @@ void main() {
   final tMovieModel = Movie(
       adult: false,
       backdropPath: '',
-      genreIds: [],
+      genreIds: const [],
       id: 1,
       originalTitle: '',
       overview: '',
@@ -64,11 +60,9 @@ void main() {
       title: '',
       video: false,
       voteAverage: 1,
-      voteCount: 1
-  );
+      voteCount: 1);
 
   final tMovieList = <Movie>[tMovieModel];
-
 
   //Now Playing Test
   blocTest<NowPlayingMoviesBloc, NowPlayingMoviesState>(
@@ -92,13 +86,13 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockGetNowPlayingMovies.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return nowPlayingMoviesBloc;
     },
     act: (bloc) => bloc.add(NowPlayingMovies()),
     expect: () => [
       NowPlayingMoviesLoading(),
-      NowPlayingMoviesError('Server Failure'),
+      const NowPlayingMoviesError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockGetNowPlayingMovies.execute());
@@ -127,13 +121,13 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockGetPopularMovies.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return popularMoviesBloc;
     },
     act: (bloc) => bloc.add(PopularMovies()),
     expect: () => [
       PopularMoviesLoading(),
-      PopularMoviesError('Server Failure'),
+      const PopularMoviesError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockGetPopularMovies.execute());
@@ -162,13 +156,13 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockGetTopRatedMovies.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return topRatedMoviesBloc;
     },
     act: (bloc) => bloc.add(TopRatedMovies()),
     expect: () => [
       TopRatedMoviesLoading(),
-      TopRatedMoviesError('Server Failure'),
+      const TopRatedMoviesError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockGetTopRatedMovies.execute());

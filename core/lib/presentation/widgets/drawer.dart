@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:about/about.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +8,7 @@ class DrawerWidgets extends StatelessWidget {
   final Function() onTapTv;
   final Function() onTapWatchlist;
 
-  DrawerWidgets(
+  const DrawerWidgets(
       {required this.onTapMovie,
       required this.onTapTv,
       required this.onTapWatchlist});

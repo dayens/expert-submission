@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/presentation/widgets/sub_heading.dart';
 import 'package:movie/presentation/pages/popular_movies_page.dart';
@@ -17,7 +19,7 @@ import '../bloc/movies/movies_state.dart';
 import 'movie_detail_page.dart';
 
 class HomeMoviePage extends StatefulWidget {
-  static const ROUTE_NAME = '/home-movie-page';
+  static const routeName = '/home-movie-page';
 
   @override
   _HomeMoviePageState createState() => _HomeMoviePageState();
@@ -42,10 +44,10 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           Navigator.pop(context);
         },
         onTapTv: () {
-          Navigator.pushReplacementNamed(context, TvSeriesPage.ROUTE_NAME);
+          Navigator.pushReplacementNamed(context, TvSeriesPage.routeName);
         },
         onTapWatchlist: () {
-          Navigator.pushNamed(context, WatchlistPage.ROUTE_NAME);
+          Navigator.pushNamed(context, WatchlistPage.routeName);
         },
       ),
       appBar: AppBar(
@@ -53,9 +55,9 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+              Navigator.pushNamed(context, SearchPage.routeName);
             },
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           )
         ],
       ),
@@ -91,7 +93,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               SubHeading(
                   title: 'Popular',
                   onTap: () {
-                    Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME);
+                    Navigator.pushNamed(context, PopularMoviesPage.routeName);
                   }),
               BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
                   builder: (context, state) {
@@ -115,7 +117,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               SubHeading(
                 title: 'Top Rated',
                 onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, TopRatedMoviesPage.routeName),
               ),
               BlocBuilder<TopRatedMoviesBloc, TopRatedMoviesState>(
                   builder: (context, state) {
@@ -147,11 +149,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
 class MovieList extends StatelessWidget {
   final List<Movie> movies;
 
-  MovieList(this.movies);
+  const MovieList(this.movies);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -163,7 +165,7 @@ class MovieList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  MovieDetailPage.ROUTE_NAME,
+                  MovieDetailPage.routeName,
                   arguments: movie.id,
                 );
               },

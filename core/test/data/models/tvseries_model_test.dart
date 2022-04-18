@@ -1,9 +1,10 @@
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tvseries/data/models/tvseries_model.dart';
 import 'package:tvseries/domain/entities/tvseries.dart';
 
 void main() {
-  final tTvSeriesModel = TvSeriesModel(
+  const tTvSeriesModel = TvSeriesModel(
     backdropPath: 'backdropPath',
     firstAirDate: 'firstAirDate',
     genreIds: [1, 2, 3],
@@ -22,7 +23,7 @@ void main() {
   final tTvSeries = TvSeries(
     backdropPath: 'backdropPath',
     firstAirDate: 'firstAirDate',
-    genreIds: [1, 2, 3],
+    genreIds: const [1, 2, 3],
     id: 1,
     overview: 'overview',
     originalName: 'originalName',
@@ -32,7 +33,7 @@ void main() {
     voteAverage: 1,
     voteCount: 1,
     originalLanguage: '',
-    originCountry: [],
+    originCountry: const [],
   );
 
   test('should be a subclass of TvSeries entity', () async {

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
@@ -13,8 +15,7 @@ import 'package:search/presentation/bloc/search/search_state.dart';
 import 'package:tvseries/domain/entities/tvseries.dart';
 import 'search_bloc_test.mocks.dart';
 
-
-@GenerateMocks([SearchMovies,SearchTvSeries])
+@GenerateMocks([SearchMovies, SearchTvSeries])
 void main() {
   late SearchBlocMovie searchBloc;
   late MockSearchMovies mockSearchMovies;
@@ -39,7 +40,7 @@ void main() {
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
-    'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
     popularity: 60.441,
     posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
     releaseDate: '2002-05-01',
@@ -51,11 +52,10 @@ void main() {
   final tMovieList = <Movie>[tMovieModel];
   const tQuery = 'spiderman';
 
-
   final tTvSeriesModel = TvSeries(
       backdropPath: '',
       firstAirDate: '',
-      genreIds: [],
+      genreIds: const [],
       id: 1,
       name: '',
       originCountry: [],
@@ -65,11 +65,9 @@ void main() {
       popularity: 1,
       posterPath: '',
       voteAverage: 1,
-      voteCount: 1
-  );
+      voteCount: 1);
   final tTvSeriesList = <TvSeries>[tTvSeriesModel];
   const tQueryTv = 'halo';
-
 
   //Search Movies Test
   blocTest<SearchBlocMovie, SearchState>(
@@ -79,7 +77,7 @@ void main() {
           .thenAnswer((_) async => Right(tMovieList));
       return searchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
@@ -94,14 +92,14 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockSearchMovies.execute(tQuery))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return searchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
-      SearchError('Server Failure'),
+      const SearchError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockSearchMovies.execute(tQuery));
@@ -117,7 +115,7 @@ void main() {
           .thenAnswer((_) async => Right(tTvSeriesList));
       return searchBlocTv;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQueryTv)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQueryTv)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
@@ -132,19 +130,17 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockSearchTvSeries.execute(tQueryTv))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return searchBlocTv;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQueryTv)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQueryTv)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
-      SearchError('Server Failure'),
+      const SearchError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockSearchTvSeries.execute(tQueryTv));
     },
   );
-
-
 }

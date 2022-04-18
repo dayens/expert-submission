@@ -23,9 +23,9 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       final result = await remoteDataSource.getAiringTodayTvSeries();
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -35,9 +35,9 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       final result = await remoteDataSource.getPopularTvSeries();
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -47,9 +47,9 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       final result = await remoteDataSource.getTopRatedTvSeries();
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -59,9 +59,9 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       final result = await remoteDataSource.getDetailTvSeries(id);
       return Right(result.toEntity());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -71,9 +71,9 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       final result = await remoteDataSource.getRecommendedTvSeries(id);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -109,7 +109,7 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -120,9 +120,9 @@ class TvSeriesRepositoryImpl extends TvSeriesRepository {
       final result = await remoteDataSource.getSearchTv(query);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 }
