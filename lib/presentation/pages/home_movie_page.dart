@@ -88,10 +88,10 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 }
               }),
               SubHeading(
-                title: 'Popular',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME),
-              ),
+                  title: 'Popular',
+                  onTap: () {
+                    Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME);
+                  }),
               BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
                   builder: (context, state) {
                 if (state is PopularMoviesLoading) {
