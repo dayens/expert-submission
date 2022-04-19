@@ -16,10 +16,8 @@ dependencies:
 
   movie:
     path: ../movie
-
   tvseries:
     path: ../tvseries
-
   core:
     path: ../core
 
