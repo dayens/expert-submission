@@ -29,6 +29,8 @@ dependencies:
     path: ../movie
   search:
     path: ../search
+  about:
+    path: ../about
   
 
 dev_dependencies:

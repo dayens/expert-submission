@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:search/domain/usecases/search_tvseries.dart';
 import 'package:tvseries/domain/entities/tvseries.dart';
+
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {

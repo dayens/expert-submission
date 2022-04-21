@@ -20,6 +20,8 @@ dependencies:
     path: ../tvseries
   core:
     path: ../core
+  about:
+    path: ../about
 
 dev_dependencies:
   flutter_test:

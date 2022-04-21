@@ -29,6 +29,8 @@ dependencies:
     path: ../tvseries
   search:
     path: ../search
+  about:
+    path: ../about
 
 dev_dependencies:
   flutter_test:

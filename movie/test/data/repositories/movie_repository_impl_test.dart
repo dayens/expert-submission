@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'dart:io';
+
 import 'package:core/data/models/genre_model.dart';
 import 'package:core/utils/exception.dart';
 import 'package:core/utils/failure.dart';
@@ -11,6 +12,7 @@ import 'package:movie/data/models/movie_detail_model.dart';
 import 'package:movie/data/models/movie_model.dart';
 import 'package:movie/data/repositories/movie_repository_impl.dart';
 import 'package:movie/domain/entities/movie.dart';
+
 import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
 
@@ -28,7 +30,7 @@ void main() {
     );
   });
 
-  const tMovieModel = MovieModel(
+  final tMovieModel = MovieModel(
     adult: false,
     backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
     genreIds: [14, 28],
@@ -192,7 +194,7 @@ void main() {
 
   group('Get Movie Detail', () {
     const tId = 1;
-    const tMovieResponse = MovieDetailResponse(
+    final tMovieResponse = MovieDetailResponse(
       adult: false,
       backdropPath: 'backdropPath',
       budget: 100,
