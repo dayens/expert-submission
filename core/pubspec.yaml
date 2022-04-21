@@ -31,6 +31,8 @@ dependencies:
     path: ../movie
   tvseries:
     path: ../tvseries
+  search:
+    path: ../search
 
 dev_dependencies:
   flutter_test:
