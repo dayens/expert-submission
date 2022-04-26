@@ -27,6 +27,7 @@ class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('popular_tv_content'),
       appBar: AppBar(
         title: const Text('Popular TvSeries'),
       ),
@@ -48,7 +49,10 @@ class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {
             );
           } else if (state is PopularTvSeriesError) {
             return Center(
-              child: Text(state.message),
+              child: Text(
+                state.message,
+                key: const Key('error_message'),
+              ),
             );
           } else {
             return const Center(

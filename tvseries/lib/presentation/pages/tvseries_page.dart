@@ -81,7 +81,10 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   return TvSeriesList(result);
                 } else if (state is AiringTodayTvSeriesError) {
                   return Center(
-                    child: Text(state.message),
+                    child: Text(
+                      state.message,
+                      key: const Key('error'),
+                    ),
                   );
                 } else {
                   return const Text('Failed');
@@ -103,7 +106,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   return TvSeriesList(result);
                 } else if (state is PopularTvSeriesError) {
                   return Center(
-                    child: Text(state.message),
+                    child: Text(state.message, key: const Key('error')),
                   );
                 } else {
                   return const Text('Failed');
@@ -126,7 +129,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
                   return TvSeriesList(result);
                 } else if (state is TopRatedTvSeriesError) {
                   return Center(
-                    child: Text(state.message),
+                    child: Text(state.message, key: const Key('error')),
                   );
                 } else {
                   return const Text('Failed');

@@ -27,6 +27,7 @@ class _TopRatedTvSeriesPageState extends State<TopRatedTvSeriesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('top_rated_tv_content'),
       appBar: AppBar(
         title: const Text('Top Rated TvSeries'),
       ),
@@ -48,7 +49,10 @@ class _TopRatedTvSeriesPageState extends State<TopRatedTvSeriesPage> {
             );
           } else if (state is TopRatedTvSeriesError) {
             return Center(
-              child: Text(state.message),
+              child: Text(
+                state.message,
+                key: const Key('error_message'),
+              ),
             );
           } else {
             return const Center(
