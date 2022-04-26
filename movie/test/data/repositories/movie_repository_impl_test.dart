@@ -30,7 +30,7 @@ void main() {
     );
   });
 
-  final tMovieModel = MovieModel(
+  const tMovieModel = MovieModel(
     adult: false,
     backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
     genreIds: [14, 28],
@@ -194,7 +194,7 @@ void main() {
 
   group('Get Movie Detail', () {
     const tId = 1;
-    final tMovieResponse = MovieDetailResponse(
+    const tMovieResponse = MovieDetailResponse(
       adult: false,
       backdropPath: 'backdropPath',
       budget: 100,
