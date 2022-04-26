@@ -11,6 +11,7 @@ import 'package:movie/domain/usecases/get_top_rated_movies.dart';
 import 'package:movie/presentation/bloc/movies/movies_bloc.dart';
 import 'package:movie/presentation/bloc/movies/movies_event.dart';
 import 'package:movie/presentation/bloc/movies/movies_state.dart';
+
 import 'movies_bloc_test.mocks.dart';
 
 @GenerateMocks([GetNowPlayingMovies, GetPopularMovies, GetTopRatedMovies])

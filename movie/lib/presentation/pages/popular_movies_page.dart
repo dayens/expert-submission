@@ -27,6 +27,7 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('popular_movies_content'),
       appBar: AppBar(
         title: const Text('Popular Movies'),
       ),
@@ -48,7 +49,10 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
             );
           } else if (state is PopularMoviesError) {
             return Center(
-              child: Text(state.message),
+              child: Text(
+                state.message,
+                key: const Key('error_message'),
+              ),
             );
           } else {
             return const Center(

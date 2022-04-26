@@ -82,7 +82,10 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return MovieList(result);
                 } else if (state is NowPlayingMoviesError) {
                   return Center(
-                    child: Text(state.message),
+                    child: Text(
+                      state.message,
+                      key: const Key('error'),
+                    ),
                   );
                 } else {
                   return const Center(
@@ -106,7 +109,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return MovieList(result);
                 } else if (state is PopularMoviesError) {
                   return Center(
-                    child: Text(state.message),
+                    child: Text(state.message, key: const Key('error')),
                   );
                 } else {
                   return const Center(
@@ -130,7 +133,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return MovieList(result);
                 } else if (state is TopRatedMoviesError) {
                   return Center(
-                    child: Text(state.message),
+                    child: Text(state.message, key: const Key('error')),
                   );
                 } else {
                   return const Center(
