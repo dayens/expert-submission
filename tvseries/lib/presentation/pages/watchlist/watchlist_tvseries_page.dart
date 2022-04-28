@@ -37,6 +37,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('watchlist_tvseries_content'),
       appBar: AppBar(
         title: const Text('Watchlist Movies'),
       ),
@@ -58,7 +59,10 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
             );
           } else if (state is WatchlistTvSeriesError) {
             return Center(
-              child: Text(state.message),
+              child: Text(
+                state.message,
+                key: const Key('error_message'),
+              ),
             );
           } else {
             return const Center(

@@ -52,6 +52,7 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
     });
 
     return Scaffold(
+      key: const Key('tvseries_detail_content'),
       body: BlocBuilder<TvSeriesDetailBloc, TvSeriesDetailState>(
           builder: (context, state) {
         if (state is TvSeriesDetailLoading) {
