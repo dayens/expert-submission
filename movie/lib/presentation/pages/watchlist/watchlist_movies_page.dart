@@ -38,6 +38,7 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('watchlist_movies_content'),
       appBar: AppBar(
         title: const Text('Watchlist Movies'),
       ),
@@ -59,7 +60,10 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
             );
           } else if (state is WatchlistMovieError) {
             return Center(
-              child: Text(state.message),
+              child: Text(
+                state.message,
+                key: const Key('error_message'),
+              ),
             );
           } else {
             return const Center(
