@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "432767052007-ff6rj313kstvr7142m81b72nlglnnqfv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.ditonton",
+            "certificate_hash": "799cda8998a6d5b51c6e3f3aee58ac88583a1310"
+          }
+        },
+        {
           "client_id": "432767052007-oh6d4v6616ff0a24ipcra7jn3n1qsrcd.apps.googleusercontent.com",
           "client_type": 3
         }
