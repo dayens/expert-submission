@@ -27,7 +27,6 @@ class HomeMoviePage extends StatefulWidget {
 }
 
 class _HomeMoviePageState extends State<HomeMoviePage> {
-
   User? user = FirebaseAuth.instance.currentUser;
 
   @override
