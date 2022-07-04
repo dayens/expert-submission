@@ -39,7 +39,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
     return Scaffold(
       key: const Key('watchlist_tvseries_content'),
       appBar: AppBar(
-        title: const Text('Watchlist Movies'),
+        title: const Text('Watchlist TvSeries'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -1,5 +1,7 @@
 import 'package:about/about.dart';
 import 'package:core/common/utils.dart';
+import 'package:core/presentation/pages/login_page.dart';
+import 'package:core/presentation/pages/register_page.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:ditonton/injection.dart' as di;
@@ -41,9 +43,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        BlocProvider(
-          create: (_) => di.locator<SearchBlocMovie>(),
-        ),
+        BlocProvider(create: (_) => di.locator<SearchBlocMovie>()),
         BlocProvider(create: (_) => di.locator<NowPlayingMoviesBloc>()),
         BlocProvider(create: (_) => di.locator<PopularMoviesBloc>()),
         BlocProvider(create: (_) => di.locator<TopRatedMoviesBloc>()),
@@ -52,18 +52,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di.locator<WatchlistMovieBloc>()),
 
         //TvSeries
-        BlocProvider(
-          create: (_) => di.locator<SearchBlocTvSeries>(),
-        ),
-        BlocProvider(
-          create: (_) => di.locator<AiringTodayTvSeriesBloc>(),
-        ),
-        BlocProvider(
-          create: (_) => di.locator<PopularTvSeriesBloc>(),
-        ),
-        BlocProvider(
-          create: (_) => di.locator<TopRatedTvSeriesBloc>(),
-        ),
+        BlocProvider(create: (_) => di.locator<SearchBlocTvSeries>()),
+        BlocProvider(create: (_) => di.locator<AiringTodayTvSeriesBloc>()),
+        BlocProvider(create: (_) => di.locator<PopularTvSeriesBloc>()),
+        BlocProvider(create: (_) => di.locator<TopRatedTvSeriesBloc>()),
         BlocProvider(create: (_) => di.locator<TvSeriesDetailBloc>()),
         BlocProvider(create: (_) => di.locator<TvSeriesRecommendedBloc>()),
         BlocProvider(create: (_) => di.locator<WatchlistTvSeriesBloc>()),
@@ -76,7 +68,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: kRichBlack,
           textTheme: kTextTheme,
         ),
-        home: HomeMoviePage(),
+        home: LoginPage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
@@ -98,6 +90,11 @@ class MyApp extends StatelessWidget {
               );
             case SearchPage.routeName:
               return CupertinoPageRoute(builder: (_) => SearchPage());
+
+            case LoginPage.routeName:
+              return CupertinoPageRoute(builder: (_) => LoginPage());
+            case RegisterPage.routeName:
+              return CupertinoPageRoute(builder: (_) => RegisterPage());
 
             //TvSeries
             case TvSeriesPage.routeName:

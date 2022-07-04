@@ -35,6 +35,7 @@ dependencies:
   firebase_core: ^1.14.1
   firebase_crashlytics: ^2.6.2
 
+
   about:
     path: about
   core:
